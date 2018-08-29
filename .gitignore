@@ -1,0 +1,41 @@
+# Editors
+.idea/
+.settings/
+.project
+.buildpath
+atlassian-ide-plugin.xml
+
+# Operating System
+.DS_Store
+Thumbs.db
+
+# Vagrant
+/dev/.vagrant/
+
+# Magento
+/.htaccess
+/.htaccess.sample
+/index.php.sample
+/php.ini.sample
+/app/etc/local.xml
+/app/etc/local.xml.phpunit
+/downloader/*
+/errors/local.xml.sample
+/media/
+/var/
+/pkginfo/
+/errors/local.xml
+/maintenance.flag
+
+# Exclusions
+!/app/.htaccess
+!/downloader/.htaccess
+!/downloader/Maged/.htaccess
+!/downloader/pearlib/.htaccess
+!/downloader/template/.htaccess
+!/errors/.htaccess
+!/includes/.htaccess
+!/lib/.htaccess
+!/media/.htaccess
+!/media/downloadable/.htaccess
+!/pkginfo/.htaccess
