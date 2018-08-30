@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Mage_EmailColumn>
+            <version>0.0.1</version>
+        </Mage_EmailColumn>
+    </modules>
+</config>
