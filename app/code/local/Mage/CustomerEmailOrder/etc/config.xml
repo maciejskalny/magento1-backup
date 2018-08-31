@@ -1,8 +1,49 @@
 <?xml version="1.0"?>
 <config>
     <modules>
-        <Mage_CustomerEmailOrder>
-            <version>0.0.1</version>
-        </Mage_CustomerEmailOrder>
+        <Emailorder_ExtendedGrid>
+            <version>1.0.1</version>
+        </Emailorder_ExtendedGrid>
     </modules>
+    <global>
+        <blocks>
+            <emailorder_extendedgrid>
+                <class>Emailorder_ExtendedGrid_Block</class>
+            </emailorder_extendedgrid>
+        </blocks>
+        <helpers>
+            <emailorder_extendedgrid>
+                <class>Emailorder_ExtendedGrid_Helper</class>
+            </emailorder_extendedgrid>
+        </helpers>
+        <models>
+            <emailorder_extendedgrid>
+                <class>Emailorder_ExtendedGrid_Model</class>
+            </emailorder_extendedgrid>
+            <sales_resource>
+                <rewrite>
+                    <order_grid_collection>Emailorder_ExtendedGrid_Model_Resource_Sales_Order_Grid_Collection</order_grid_collection>
+                </rewrite>
+            </sales_resource>
+        </models>
+    </global>
+    <adminhtml>
+        <events>
+            <sales_order_grid_collection_load_before>
+                <observers>
+                    <emailorder_exgrid>
+                        <model>emailorder_extendedgrid/observer</model>
+                        <method>salesOrderGridCollectionLoadBefore</method>
+                    </emailorder_exgrid>
+                </observers>
+            </sales_order_grid_collection_load_before>
+        </events>
+        <layout>
+            <updates>
+                <emailorder_extendedgrid>
+                    <file>emailorder/extendedgrid.xml</file>
+                </emailorder_extendedgrid>
+            </updates>
+        </layout>
+    </adminhtml>
 </config>
