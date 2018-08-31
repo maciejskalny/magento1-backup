@@ -1,0 +1,11 @@
+<config>
+    <global>
+        <blocks>
+            <adminhtml>
+                <rewrite>
+                    <sales_order_grid>MailModule_Test_Block_Adminhtml_Order_Grid</sales_order_grid>
+                </rewrite>
+            </adminhtml>
+        </blocks>
+    </global>
+</config>

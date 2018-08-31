@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <config>
     <modules>
-        <Emailorder_ExtendedGrid>
+        <MailModule>
             <active>true</active>
             <codePool>local</codePool>
-        </Emailorder_ExtendedGrid>
+        </MailModule>
     </modules>
 </config>
