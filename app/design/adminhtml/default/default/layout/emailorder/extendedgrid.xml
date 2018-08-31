@@ -2,10 +2,10 @@
     <sales_order_grid_update_handle>
         <reference name="sales_order.grid">
             <action method="addColumnAfter">
-                <columnId>email</columnId>
+                <columnId>customer_email</columnId>
                 <arguments>
                     <header>Customer Email</header>
-                    <index>email</index>
+                    <index>customer_email</index>
                     <filter_index>mail.email</filter_index>
                     <type>text</type>
                 </arguments>
@@ -23,13 +23,15 @@
     </adminhtml_sales_order_index>
 </layout>
 
+
+
 <!--<layout>-->
 <!--<sales_order_grid_update_handle>-->
     <!--<reference name="sales_order.grid">-->
         <!--<action method="addColumnAfter">-->
             <!--<columnId>payment_method</columnId>-->
             <!--<arguments>-->
-                <!--<header>Customer Email</header>-->
+                <!--<header>Payment Method</header>-->
                 <!--<index>payment_method</index>-->
                 <!--<filter_index>payment.method</filter_index>-->
                 <!--<type>text</type>-->

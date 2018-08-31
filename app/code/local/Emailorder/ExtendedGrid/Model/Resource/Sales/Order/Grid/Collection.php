@@ -17,7 +17,7 @@ class Emailorder_ExtendedGrid_Model_Resource_Sales_Order_Grid_Collection extends
             $havingCondition = $countSelect->getPart(Zend_Db_Select::HAVING);
             if (count($havingCondition)) {
                 $countSelect->where(
-                    str_replace("group_concat(`sales_flat_order_item`.sku SEPARATOR ', ')", 'sales_flat_order_item.sku', $havingCondition[0])
+                    str_replace("group_concat(`sales_flat_order_address`.sku SEPARATOR ', ')", 'sales_flat_order_address.sku', $havingCondition[0])
                 );
                 $countSelect->reset(Zend_Db_Select::HAVING);
             }

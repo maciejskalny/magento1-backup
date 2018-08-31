@@ -31,10 +31,10 @@
         <events>
             <sales_order_grid_collection_load_before>
                 <observers>
-                    <emailorder_exgrid>
+                    <emailorder_extendedgrid>
                         <model>emailorder_extendedgrid/observer</model>
                         <method>salesOrderGridCollectionLoadBefore</method>
-                    </emailorder_exgrid>
+                    </emailorder_extendedgrid>
                 </observers>
             </sales_order_grid_collection_load_before>
         </events>
