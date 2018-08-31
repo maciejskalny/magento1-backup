@@ -57,6 +57,12 @@ class Mage_Adminhtml_Block_Sales_Order_Grid extends Mage_Adminhtml_Block_Widget_
     protected function _prepareCollection()
     {
         $collection = Mage::getResourceModel($this->_getCollectionClass());
+        $collection->getSelect()
+            ->join(
+                'customer_entity',
+                'main_table.customer_id = customer_entity.entity_id',
+                array('customer_name' => 'email')
+            );
         $this->setCollection($collection);
         return parent::_prepareCollection();
     }
@@ -87,6 +93,14 @@ class Mage_Adminhtml_Block_Sales_Order_Grid extends Mage_Adminhtml_Block_Widget_
             'index' => 'created_at',
             'type' => 'datetime',
             'width' => '100px',
+        ));
+
+        $this->addColumn('thumbnail', array(
+            'header'    => Mage::helper('Sales')->__('Email'),
+            'width'     => '100px',
+            'index'     => 'customer_name',
+            'type'        => 'text',
+
         ));
 
         $this->addColumn('billing_name', array(
@@ -140,7 +154,7 @@ class Mage_Adminhtml_Block_Sales_Order_Grid extends Mage_Adminhtml_Block_Widget_
                     'sortable'  => false,
                     'index'     => 'stores',
                     'is_system' => true,
-            ));
+                ));
         }
         $this->addRssList('rss/order/new', Mage::helper('sales')->__('New Order RSS'));
 
@@ -158,48 +172,48 @@ class Mage_Adminhtml_Block_Sales_Order_Grid extends Mage_Adminhtml_Block_Widget_
 
         if (Mage::getSingleton('admin/session')->isAllowed('sales/order/actions/cancel')) {
             $this->getMassactionBlock()->addItem('cancel_order', array(
-                 'label'=> Mage::helper('sales')->__('Cancel'),
-                 'url'  => $this->getUrl('*/sales_order/massCancel'),
+                'label'=> Mage::helper('sales')->__('Cancel'),
+                'url'  => $this->getUrl('*/sales_order/massCancel'),
             ));
         }
 
         if (Mage::getSingleton('admin/session')->isAllowed('sales/order/actions/hold')) {
             $this->getMassactionBlock()->addItem('hold_order', array(
-                 'label'=> Mage::helper('sales')->__('Hold'),
-                 'url'  => $this->getUrl('*/sales_order/massHold'),
+                'label'=> Mage::helper('sales')->__('Hold'),
+                'url'  => $this->getUrl('*/sales_order/massHold'),
             ));
         }
 
         if (Mage::getSingleton('admin/session')->isAllowed('sales/order/actions/unhold')) {
             $this->getMassactionBlock()->addItem('unhold_order', array(
-                 'label'=> Mage::helper('sales')->__('Unhold'),
-                 'url'  => $this->getUrl('*/sales_order/massUnhold'),
+                'label'=> Mage::helper('sales')->__('Unhold'),
+                'url'  => $this->getUrl('*/sales_order/massUnhold'),
             ));
         }
 
         $this->getMassactionBlock()->addItem('pdfinvoices_order', array(
-             'label'=> Mage::helper('sales')->__('Print Invoices'),
-             'url'  => $this->getUrl('*/sales_order/pdfinvoices'),
+            'label'=> Mage::helper('sales')->__('Print Invoices'),
+            'url'  => $this->getUrl('*/sales_order/pdfinvoices'),
         ));
 
         $this->getMassactionBlock()->addItem('pdfshipments_order', array(
-             'label'=> Mage::helper('sales')->__('Print Packingslips'),
-             'url'  => $this->getUrl('*/sales_order/pdfshipments'),
+            'label'=> Mage::helper('sales')->__('Print Packingslips'),
+            'url'  => $this->getUrl('*/sales_order/pdfshipments'),
         ));
 
         $this->getMassactionBlock()->addItem('pdfcreditmemos_order', array(
-             'label'=> Mage::helper('sales')->__('Print Credit Memos'),
-             'url'  => $this->getUrl('*/sales_order/pdfcreditmemos'),
+            'label'=> Mage::helper('sales')->__('Print Credit Memos'),
+            'url'  => $this->getUrl('*/sales_order/pdfcreditmemos'),
         ));
 
         $this->getMassactionBlock()->addItem('pdfdocs_order', array(
-             'label'=> Mage::helper('sales')->__('Print All'),
-             'url'  => $this->getUrl('*/sales_order/pdfdocs'),
+            'label'=> Mage::helper('sales')->__('Print All'),
+            'url'  => $this->getUrl('*/sales_order/pdfdocs'),
         ));
 
         $this->getMassactionBlock()->addItem('print_shipping_label', array(
-             'label'=> Mage::helper('sales')->__('Print Shipping Labels'),
-             'url'  => $this->getUrl('*/sales_order_shipment/massPrintShippingLabel'),
+            'label'=> Mage::helper('sales')->__('Print Shipping Labels'),
+            'url'  => $this->getUrl('*/sales_order_shipment/massPrintShippingLabel'),
         ));
 
         return $this;
