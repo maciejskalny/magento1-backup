@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <config>
     <modules>
-        <Mage_CustomerEmailOrder>
+        <Emailorder_ExtendedGrid>
             <active>true</active>
             <codePool>local</codePool>
-        </Mage_CustomerEmailOrder>
+        </Emailorder_ExtendedGrid>
     </modules>
 </config>
