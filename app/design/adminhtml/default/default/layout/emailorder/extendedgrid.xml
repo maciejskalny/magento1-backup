@@ -2,11 +2,11 @@
     <sales_order_grid_update_handle>
         <reference name="sales_order.grid">
             <action method="addColumnAfter">
-                <columnId>payment_method</columnId>
+                <columnId>email</columnId>
                 <arguments>
-                    <header>Payment Method</header>
-                    <index>payment_method</index>
-                    <filter_index>payment.method</filter_index>
+                    <header>Customer Email</header>
+                    <index>email</index>
+                    <filter_index>mail.email</filter_index>
                     <type>text</type>
                 </arguments>
                 <after>shipping_name</after>
