@@ -1,22 +1,32 @@
 <?php
 
+/**
+ * This file is responsible for joining email column to orders grid.
+ *
+ * PHP version 7.1.21
+ *
+ * @category  Module
+ * @package   Virtua_Internship
+ * @author    Maciej Skalny <contact@wearevirtua.com>
+ * @copyright 2018 Copyright (c) Virtua (http://wwww.wearevirtua.com)
+ * @license   GPL http://opensource.org/licenses/gpl-license.php
+ * @link      https://github.com/maciejskalny/backup-symfony
+ */
+
+/**
+ * Class MailModule_Test_Block_Adminhtml_Order_Grid
+ */
 class MailModule_Test_Block_Adminhtml_Order_Grid extends Mage_Adminhtml_Block_Sales_Order_Grid
 {
     protected function _prepareCollection()
     {
         $collection = Mage::getResourceModel($this->_getCollectionClass());
 
-        //$collection->join('sales_flat_order', 'main_table.entity_id = sales_flat_order.entity_id',array('customer_email'=>'customer_email'));
-
-        //$collection->getSelect()->join('customer_entity', 'main_table.customer_id = customer_entity.entity_id', array('customer_name' => 'email'));
-
-        //$collection->join('sales/order_item', 'order_id=entity_id', array('email'=>'email', 'sku' =>'sku', 'qty_ordered'=>'qty_ordered' ), null,'left');
-
         $collection->getSelect()->join('customer_entity', 'main_table.customer_id = customer_entity.entity_id',array('customer_name' => 'email'));
 
         $this->setCollection($collection);
 
-        return;
+        return Mage_Adminhtml_Block_Widget_Grid::_prepareCollection();
     }
 
     protected function _prepareColumns()
@@ -26,10 +36,8 @@ class MailModule_Test_Block_Adminhtml_Order_Grid extends Mage_Adminhtml_Block_Sa
             'width' => '100px',
             'index' => 'customer_name',
             'type' => 'text',
-            'filter_index' => 'sales_flat_order.customer_email',
-            //'filter_index' => 'customer_entity.email',
-            //‘filter_index’ => ‘sales_flat_order.customer_email’,
-            ));
+            'filter_index' => 'customer_entity.email',
+        ));
 
         return parent::_prepareColumns();
     }
