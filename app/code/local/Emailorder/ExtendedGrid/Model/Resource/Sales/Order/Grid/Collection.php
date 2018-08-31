@@ -1,5 +1,20 @@
 <?php
+/**
+ * This file is a class which supports adding email field to orders grid.
+ *
+ * PHP version 7.1.21
+ *
+ * @category  Class
+ * @package   Virtua_Internship
+ * @author    Maciej Skalny <contact@wearevirtua.com>
+ * @copyright 2018 Copyright (c) Virtua (http://wwww.wearevirtua.com)
+ * @license   GPL http://opensource.org/licenses/gpl-license.php
+ * @link      https://bitbucket.org/wearevirtua/magento1ms
+ */
 
+/**
+ * Class Emailorder_ExtendedGrid_Model_Resource_Sales_Order_Grid_Collection
+ */
 class Emailorder_ExtendedGrid_Model_Resource_Sales_Order_Grid_Collection extends Mage_Sales_Model_Resource_Order_Grid_Collection
 {
     /**
