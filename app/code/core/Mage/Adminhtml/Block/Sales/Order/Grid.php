@@ -57,6 +57,12 @@ class Mage_Adminhtml_Block_Sales_Order_Grid extends Mage_Adminhtml_Block_Widget_
     protected function _prepareCollection()
     {
         $collection = Mage::getResourceModel($this->_getCollectionClass());
+        $collection->getSelect()
+            ->join(
+                'customer_entity',
+                'main_table.customer_id = customer_entity.entity_id',
+                array('customer_name' => 'email')
+            );
         $this->setCollection($collection);
         return parent::_prepareCollection();
     }
@@ -87,6 +93,14 @@ class Mage_Adminhtml_Block_Sales_Order_Grid extends Mage_Adminhtml_Block_Widget_
             'index' => 'created_at',
             'type' => 'datetime',
             'width' => '100px',
+        ));
+
+        $this->addColumn('thumbnail', array(
+            'header'    => Mage::helper('Sales')->__('Email'),
+            'width'     => '100px',
+            'index'     => 'customer_name',
+            'type'        => 'text',
+
         ));
 
         $this->addColumn('billing_name', array(
