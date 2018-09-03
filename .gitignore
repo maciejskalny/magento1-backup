@@ -39,3 +39,9 @@ Thumbs.db
 !/media/.htaccess
 !/media/downloadable/.htaccess
 !/pkginfo/.htaccess
+
+#access.log
+access.log
+
+#error.log
+error.log
