@@ -14,20 +14,20 @@
  */
 -->
 <config>
-        <modules>
-            <Virtua_CustomerPoll>
-                <version>0.1.0</version>
-            </Virtua_CustomerPoll>
-        </modules>
-        <frontend>
-            <routers>
-                <index>
-                    <use>standard</use>
-                    <args>
-                        <module>Virtua_CustomerPoll</module>
-                        <frontname>customerpoll</frontname>
-                    </args>
-                </index>
-            </routers>
-        </frontend>
+    <modules>
+        <Virtua_CustomerPoll>
+            <version>0.1.0</version>
+        </Virtua_CustomerPoll>
+    </modules>
+    <frontend>
+        <routers>
+            <customerpoll>
+                <use>standard</use>
+                <args>
+                    <module>Virtua_CustomerPoll</module>
+                    <frontName>customerpoll</frontName>
+                </args>
+            </customerpoll>
+        </routers>
+    </frontend>
 </config>
