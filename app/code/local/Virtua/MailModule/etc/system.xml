@@ -7,7 +7,7 @@
         </myconf>
     </tabs>
     <sections>
-        <tab1 translate="label" module="adminhtml">
+        <mailmodule_config translate="label" module="adminhtml">
             <label>Mail Module</label>
             <tab>myconf</tab>
             <sort_order>10</sort_order>
@@ -15,24 +15,24 @@
             <show_in_website>1</show_in_website>
             <show_in_store>1</show_in_store>
             <groups>
-                <general translate="label comment">
-                    <label>VIRTUA - Mail Module</label>
+                <mailmodule_group translate="label comment">
+                    <label>VIRTUA - Mail Module config</label>
                     <sort_order>50</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
                     <fields>
-                        <active translate="label comment">
+                        <mailmodule_select translate="label comment">
                             <label>Mail Module</label>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_enabledisable</source_model>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                        </active>
+                        </mailmodule_select>
                     </fields>
-                </general>
+                </mailmodule_group>
             </groups>
-        </tab1>
+        </mailmodule_config>
     </sections>
 </config>

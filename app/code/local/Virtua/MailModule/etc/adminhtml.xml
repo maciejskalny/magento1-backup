@@ -8,9 +8,9 @@
                         <children>
                             <config>
                                 <children>
-                                    <tab1>
-                                        <title>Tab #1</title> <!-- Used in resources tree -->
-                                    </tab1>
+                                    <mailmodule_config>
+                                        <title>Mail Module config</title> <!-- Used in resources tree -->
+                                    </mailmodule_config>
                                 </children>
                             </config>
                         </children>

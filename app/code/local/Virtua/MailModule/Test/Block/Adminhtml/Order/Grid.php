@@ -10,13 +10,13 @@
  * @author    Maciej Skalny <contact@wearevirtua.com>
  * @copyright 2018 Copyright (c) Virtua (http://wwww.wearevirtua.com)
  * @license   GPL http://opensource.org/licenses/gpl-license.php
- * @link      https://github.com/maciejskalny/backup-symfony
+ * @link      https://bitbucket.org/wearevirtua/magento1ms/
  */
 
 /**
- * Class MailModule_Test_Block_Adminhtml_Order_Grid
+ * Class Virtua_MailModule_Test_Block_Adminhtml_Order_Grid
  */
-class MailModule_Test_Block_Adminhtml_Order_Grid extends Mage_Adminhtml_Block_Sales_Order_Grid
+class Virtua_MailModule_Test_Block_Adminhtml_Order_Grid extends Mage_Adminhtml_Block_Sales_Order_Grid
 {
     protected function _prepareCollection()
     {
@@ -31,13 +31,17 @@ class MailModule_Test_Block_Adminhtml_Order_Grid extends Mage_Adminhtml_Block_Sa
 
     protected function _prepareColumns()
     {
-        $this->addColumnAfter('thumbnail', array(
-            'header' => Mage::helper('Sales')->__('Email'),
-            'width' => '100px',
-            'index' => 'customer_name',
-            'type' => 'text',
-            'filter_index' => 'customer_entity.email',
-        ), 'shipping_name');
+
+        if (Mage::getStoreConfig('mailmodule_config/mailmodule_group/mailmodule_select', Mage::app()->getStore()) == true) {
+
+            $this->addColumnAfter('thumbnail', array(
+                'header' => Mage::helper('Sales')->__('Email'),
+                'width' => '100px',
+                'index' => 'customer_name',
+                'type' => 'text',
+                'filter_index' => 'customer_entity.email',
+            ), 'shipping_name');
+        }
 
         return parent::_prepareColumns();
     }
