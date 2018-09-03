@@ -9,7 +9,7 @@
                             <config>
                                 <children>
                                     <mailmodule_config>
-                                        <title>Mail Module config</title> <!-- Used in resources tree -->
+                                        <title>Mail Module config</title>
                                     </mailmodule_config>
                                 </children>
                             </config>
