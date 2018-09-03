@@ -15,6 +15,11 @@
 -->
 <config>
     <global>
+        <modules>
+            <MailModule>
+                <version>0.1.0</version>
+            </MailModule>
+        </modules>
         <blocks>
             <adminhtml>
                 <rewrite>
@@ -22,5 +27,35 @@
                 </rewrite>
             </adminhtml>
         </blocks>
+        <frontend>
+            <routers>
+                <mailmodule>
+                    <use>standard</use>
+                    <args>
+                        <module>MailModule</module>
+                        <frontName>mailmodule</frontName>
+                    </args>
+                </mailmodule>
+            </routers>
+        </frontend>
+        <helpers>
+            <mailmodule>
+                <class>MailModule_Helper</class>
+            </mailmodule>
+        </helpers>
     </global>
+    <!--<default>-->
+    <!--<tab1>-->
+    <!--<general>-->
+    <!--<text_field>Default value</text_field>-->
+    <!--<textarea></textarea>-->
+    <!--<dropdown>key2</dropdown>-->
+    <!--<multiple_dropdown>key1,key2</multiple_dropdown>-->
+    <!--<time>11,30,45</time>-->
+    <!--<active>0</active>-->
+    <!--<boolean>1</boolean>-->
+    <!--<dependant_text_field>Default value</dependant_text_field>-->
+    <!--</general>-->
+    <!--</tab1>-->
+    <!--</default>-->
 </config>

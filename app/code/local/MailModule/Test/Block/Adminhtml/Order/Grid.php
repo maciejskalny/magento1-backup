@@ -31,13 +31,13 @@ class MailModule_Test_Block_Adminhtml_Order_Grid extends Mage_Adminhtml_Block_Sa
 
     protected function _prepareColumns()
     {
-        $this->addColumn('thumbnail', array(
+        $this->addColumnAfter('thumbnail', array(
             'header' => Mage::helper('Sales')->__('Email'),
             'width' => '100px',
             'index' => 'customer_name',
             'type' => 'text',
             'filter_index' => 'customer_entity.email',
-        ));
+        ), 'shipping_name');
 
         return parent::_prepareColumns();
     }
