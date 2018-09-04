@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <customerpoll_index_index>
+        <reference name="content">
+            <block type="customerpoll/customerpoll" name="customerpoll" template="customerpoll/customerpoll.phtml" />
+        </reference>
+    </customerpoll_index_index>
+</layout>

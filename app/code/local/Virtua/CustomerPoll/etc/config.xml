@@ -29,5 +29,19 @@
                 </args>
             </customerpoll>
         </routers>
+        <layout>
+            <updates>
+                <customerpoll>
+                    <file>customerpoll.xml</file>
+                </customerpoll>
+            </updates>
+        </layout>
     </frontend>
+    <global>
+        <blocks>
+            <customerpoll>
+                <class>Virtua_CustomerPoll_Block</class>
+            </customerpoll>
+        </blocks>
+    </global>
 </config>
