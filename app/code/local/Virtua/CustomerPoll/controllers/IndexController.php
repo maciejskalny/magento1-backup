@@ -4,7 +4,18 @@ class Virtua_CustomerPoll_IndexController extends Mage_Core_Controller_Front_Act
 {
     public function indexAction()
     {
-        echo 'Hello World';
+
+//        $block = $this->getLayout()->createBlock('core/template');
+//
+//        $block->setTemplate('wishlist/view.phtml');
+//
+//        echo $block->toHtml();
+
+        $this->loadLayout();
+        $this->renderLayout();
+
+        //Zend_Debug::dump($this->getLayout()->getUpdate()->getHandles());
+
     }
 }
 
