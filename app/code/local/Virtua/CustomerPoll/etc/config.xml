@@ -43,5 +43,39 @@
                 <class>Virtua_CustomerPoll_Block</class>
             </customerpoll>
         </blocks>
+        <models>
+            <customerpoll>
+                <class>Virtua_CustomerPoll_Model</class>
+                <resourceModel>customerpoll_mysql4</resourceModel>
+            </customerpoll>
+            <customerpoll_mysql4>
+                <class>Virtua_CustomerPoll_Model_Mysql4</class>
+                <entities>
+                    <customerpoll>
+                        <table>customerpoll</table>
+                    </customerpoll>
+                </entities>
+            </customerpoll_mysql4>
+        </models>
+        <resources>
+            <customerpoll_setup>
+                <setup>
+                    <module>Virtua_CustomerPoll</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </customerpoll_setup>
+            <customerpoll_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </customerpoll_write>
+            <customerpoll_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </customerpoll_read>
+        </resources>
     </global>
 </config>
