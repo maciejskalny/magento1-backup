@@ -7,12 +7,28 @@ class Virtua_CustomerPoll_IndexController extends Mage_Core_Controller_Front_Act
         $this->loadLayout();
         $this->renderLayout();
 
-        $resource = Mage::getSingleton('core/resource');
-        $writeAdapter = $resource->getConnection('core_write');
-        $table = $resource->getTableName('customerpoll');
+        $vote = Mage::app()->getRequest()->getParam('storepoll');
 
-        $query = "INSERT INTO {$table} (`option`,`count`) VALUES ('yes', 0);";
-        $writeAdapter->query($query);
+        if ($vote == "yes" || $vote == "no") {
+            $resource = Mage::getSingleton('core/resource');
+            $table = $resource->getTableName('customerpoll');
+            $writeAdapter = $resource->getConnection('core_write');
+            $readAdapter = $resource->getConnection('core_read');
+
+            $select = "SELECT `option_id` FROM `customerpoll` WHERE `option`='{$vote}';";
+            $row = $readAdapter->fetchAll($select);
+
+            if(empty($row))
+            {
+                $query = "INSERT INTO {$table} (`option`,`count`) VALUES ('{$vote}', 1);";
+                $writeAdapter->query($query);
+            } else {
+                $count = "SELECT `count` FROM `customerpoll` WHERE `option`='{$vote}';";
+                $count = $readAdapter->fetchAll($count);
+                $count = $count['count']+1;
+                $query = "UPDATE {$table} SET `count` = '{$count}' WHERE `option` = '{$vote}';";
+                $writeAdapter->query($query);
+            }
+        }
     }
 }
-

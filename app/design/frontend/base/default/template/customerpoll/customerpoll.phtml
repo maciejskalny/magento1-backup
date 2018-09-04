@@ -2,11 +2,13 @@
 
 echo $this->myfunction();
 
+Zend_Debug::dump(Mage::getUrl('customerpool/index'))
+
 ?>
 
 Is our store performance good?
-
-<form method="post">
+<!--//<form name="form" action="--><?php //Mage::getBaseUrl('') ?><!--[controller_first_name]/save" method="post"></form>-->
+<form method="post" action="<?php Mage::getUrl('customerpoll/index') ?>">
     <label>
         <input type="radio" name="storepoll" value="yes" required> Yes
     </label>
