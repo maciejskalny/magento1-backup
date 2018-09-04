@@ -22,10 +22,14 @@ class Virtua_CustomerPoll_IndexController extends Mage_Core_Controller_Front_Act
             {
                 $query = "INSERT INTO {$table} (`option`,`count`) VALUES ('{$vote}', 1);";
                 $writeAdapter->query($query);
+                //Zend_Debug::dump($query);
             } else {
-                $count = "SELECT `count` FROM `customerpoll` WHERE `option`='{$vote}';";
-                $count = $readAdapter->fetchAll($count);
-                $count = $count['count']+1;
+                $query = "SELECT `count` FROM `customerpoll` WHERE `option`='{$vote}';";
+                $count = $readAdapter->fetchAll($query);
+                $count = (int)$count;
+                Zend_Debug::dump($count);
+                $count++;
+                Zend_Debug::dump($count);
                 $query = "UPDATE {$table} SET `count` = '{$count}' WHERE `option` = '{$vote}';";
                 $writeAdapter->query($query);
             }
