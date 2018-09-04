@@ -4,18 +4,15 @@ class Virtua_CustomerPoll_IndexController extends Mage_Core_Controller_Front_Act
 {
     public function indexAction()
     {
-
-//        $block = $this->getLayout()->createBlock('core/template');
-//
-//        $block->setTemplate('wishlist/view.phtml');
-//
-//        echo $block->toHtml();
-
         $this->loadLayout();
         $this->renderLayout();
 
-        //Zend_Debug::dump($this->getLayout()->getUpdate()->getHandles());
+        $resource = Mage::getSingleton('core/resource');
+        $writeAdapter = $resource->getConnection('core_write');
+        $table = $resource->getTableName('customerpoll');
 
+        $query = "INSERT INTO {$table} (`option`,`count`) VALUES ('yes', 0);";
+        $writeAdapter->query($query);
     }
 }
 
