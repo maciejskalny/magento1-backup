@@ -13,16 +13,15 @@
  */
 
 /**
- * Class Virtua_CustomerPoll_Model_Mysql4_Customerpoll_Collection
+ * Class Virtua_CustomerPoll_Model_Mysql4_Customerpoll
  */
-class Virtua_CustomerPoll_Model_Mysql4_Customerpoll_Collection extends Mage_Core_Model_Mysql4_Collection_Abstract
+class Virtua_CustomerPoll_Model_Resource_Customerpoll extends Mage_Core_Model_Resource_Db_Abstract
 {
     /**
      * Class constructor
      */
     public function _construct()
     {
-        parent::_construct();
-        $this->_init('customerpoll/customerpoll');
+        $this->_init('customerpoll/customerpoll', 'option_id');
     }
 }

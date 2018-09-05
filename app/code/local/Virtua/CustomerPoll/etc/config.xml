@@ -51,16 +51,16 @@
         <models>
             <customerpoll>
                 <class>Virtua_CustomerPoll_Model</class>
-                <resourceModel>customerpoll_mysql4</resourceModel>
+                <resourceModel>customerpoll_resource</resourceModel>
             </customerpoll>
-            <customerpoll_mysql4>
-                <class>Virtua_CustomerPoll_Model_Mysql4</class>
+            <customerpoll_resource>
+                <class>Virtua_CustomerPoll_Model_Resource</class>
                 <entities>
                     <customerpoll>
                         <table>customerpoll</table>
                     </customerpoll>
                 </entities>
-            </customerpoll_mysql4>
+            </customerpoll_resource>
         </models>
         <resources>
             <customerpoll_setup>
