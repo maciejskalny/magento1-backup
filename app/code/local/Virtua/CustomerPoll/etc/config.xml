@@ -83,4 +83,15 @@
             </customerpoll_read>
         </resources>
     </global>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Virtua_CustomerPoll_Adminhtml before="Mage_Adminhtml">Virtua_CustomerPoll_Adminhtml</Virtua_CustomerPoll_Adminhtml>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
 </config>
