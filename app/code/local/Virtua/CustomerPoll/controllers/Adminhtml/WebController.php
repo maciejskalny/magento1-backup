@@ -4,7 +4,14 @@ class Virtua_CustomerPoll_Adminhtml_WebController extends Mage_Adminhtml_Control
 {
     public function indexAction()
     {
-        $this->loadLayout();
+//        $this->loadLayout();
+//        $this->renderLayout();
+//
+//        echo 'HelloWord';
+
+        $this->loadLayout()
+            ->_setActiveMenu('customermenu')
+            ->_title($this->__('Poll'));
         $this->renderLayout();
     }
 }

@@ -83,6 +83,15 @@
             </customerpoll_read>
         </resources>
     </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <customerpoll>
+                    <file>customerpolladmin.xml</file>
+                </customerpoll>
+            </updates>
+        </layout>
+    </adminhtml>
     <admin>
         <routers>
             <adminhtml>
