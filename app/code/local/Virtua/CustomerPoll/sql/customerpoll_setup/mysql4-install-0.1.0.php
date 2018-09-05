@@ -1,4 +1,16 @@
 <?php
+/**
+ * This file creates table in database.
+ *
+ * PHP version 7.1.21
+ *
+ * @category  Installer
+ * @package   Virtua_Internship
+ * @author    Maciej Skalny <contact@wearevirtua.com>
+ * @copyright 2018 Copyright (c) Virtua (http://wwww.wearevirtua.com)
+ * @license   GPL http://opensource.org/licenses/gpl-license.php
+ * @link      https://bitbucket.org/wearevirtua/magento1ms/
+ */
 
 $installer = $this;
 $installer->startSetup();

@@ -1,7 +1,26 @@
 <?php
+/**
+ * This file is a block, which supports customer poll.
+ *
+ * PHP version 7.1.21
+ *
+ * @category  Block
+ * @package   Virtua_Internship
+ * @author    Maciej Skalny <contact@wearevirtua.com>
+ * @copyright 2018 Copyright (c) Virtua (http://wwww.wearevirtua.com)
+ * @license   GPL http://opensource.org/licenses/gpl-license.php
+ * @link      https://bitbucket.org/wearevirtua/magento1ms/
+ */
 
+/**
+ * Class Virtua_CustomerPoll_Block_CustomerPoll
+ */
 class Virtua_CustomerPoll_Block_CustomerPoll extends Mage_Core_Block_Template
 {
+    /**
+     * Returns poll results
+     * @return array
+     */
     public function getResults()
     {
         $model = Mage::getModel('customerpoll/customerpoll');
@@ -17,28 +36,4 @@ class Virtua_CustomerPoll_Block_CustomerPoll extends Mage_Core_Block_Template
 
         return $answers;
     }
-//
-//        public function indexxAction()
-//    {
-//        $this->loadLayout();
-//        $this->renderLayout();
-//
-//        $model = Mage::getModel('customerpoll/customerpoll');
-//        $vote = Mage::app()->getRequest()->getParam('storepoll');
-//
-//        if ($vote == 'yes' || $vote == 'no') {
-//            if (empty($model->load($vote, 'option')->getOrigData())) {
-//                $data = array(
-//                    'option' => $vote,
-//                    'count' => 1
-//                );
-//                $model->setData($data)->save();
-//            } else {
-//                $count = (int)$model->load($vote, 'option')->getOrigData()['count'];
-//                $count = $count + 1;
-//                $model->load($vote, 'option')->setData('count', $count)->save();
-//            }
-//        }
-//    }
-
 }
