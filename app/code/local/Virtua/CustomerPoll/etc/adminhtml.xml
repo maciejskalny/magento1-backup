@@ -1,22 +1,16 @@
 <?xml version="1.0"?>
 <config>
-    <acl>
-        <resources>
-            <admin>
-                <children>
-                    <system>
-                        <children>
-                            <config>
-                                <children>
-                                    <customerpoll_section>
-                                        <title>Customer Poll results</title>
-                                    </customerpoll_section>
-                                </children>
-                            </config>
-                        </children>
-                    </system>
-                </children>
-            </admin>
-        </resources>
-    </acl>
+    <menu>
+        <customermenu module="customerpoll">
+            <title>Customer</title>
+            <sort_order>999</sort_order>
+            <children>
+                <customermenupoll module="customerpoll">
+                    <title>Poll</title>
+                    <sort_order>0</sort_order>
+                    <action>customerpoll</action>
+                </customermenupoll>
+            </children>
+        </customermenu>
+    </menu>
 </config>
