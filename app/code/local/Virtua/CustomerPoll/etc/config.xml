@@ -43,6 +43,11 @@
                 <class>Virtua_CustomerPoll_Block</class>
             </customerpoll>
         </blocks>
+        <helpers>
+            <customerpoll>
+                <class>Virtua_CustomerPoll_Helper</class>
+            </customerpoll>
+        </helpers>
         <models>
             <customerpoll>
                 <class>Virtua_CustomerPoll_Model</class>
