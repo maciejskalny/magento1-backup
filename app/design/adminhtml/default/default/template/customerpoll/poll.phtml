@@ -1,52 +1,31 @@
+<?php
+$answers = $this->getResults();
 
-<script>
-    window.onload = function () {
+$dataPoints = array(
+    array("y" => $answers['yes'], "label" => "Yes" ),
+    array("y" => $answers['no'], "label" => "No" )
+);
 
-        var chart = new CanvasJS.Chart("chartContainer", {
-            animationEnabled: true,
+?>
+    <script>
+        window.onload = function() {
 
-            title:{
-                text:"Fortune 500 Companies by Country"
-            },
-            axisX:{
-                interval: 1
-            },
-            axisY2:{
-                interlacedColor: "rgba(1,77,101,.2)",
-                gridColor: "rgba(1,77,101,.1)",
-                title: "Number of Companies"
-            },
-            data: [{
-                type: "bar",
-                name: "companies",
-                axisYType: "secondary",
-                color: "#014D65",
-                dataPoints: [
-                    { y: 3, label: "Sweden" },
-                    { y: 7, label: "Taiwan" },
-                    { y: 5, label: "Russia" },
-                    { y: 9, label: "Spain" },
-                    { y: 7, label: "Brazil" },
-                    { y: 7, label: "India" },
-                    { y: 9, label: "Italy" },
-                    { y: 8, label: "Australia" },
-                    { y: 11, label: "Canada" },
-                    { y: 15, label: "South Korea" },
-                    { y: 12, label: "Netherlands" },
-                    { y: 15, label: "Switzerland" },
-                    { y: 25, label: "Britain" },
-                    { y: 28, label: "Germany" },
-                    { y: 29, label: "France" },
-                    { y: 52, label: "Japan" },
-                    { y: 103, label: "China" },
-                    { y: 134, label: "US" }
-                ]
-            }]
-        });
-        chart.render();
+            var chart = new CanvasJS.Chart("chartContainer", {
+                animationEnabled: true,
+                theme: "light2",
+                title:{
+                    text: "Poll: Is our store performance good?"
+                },
+                data: [{
+                    type: "column",
+                    yValueFormatString: "#,##0.## tonnes",
+                    dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
+                }]
+            });
+            chart.render();
 
-    }
-</script>
+        }
+    </script>
 
-<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+<div id="chartContainer" style="height: 370px; width: 60%; margin:0 auto;"></div>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>

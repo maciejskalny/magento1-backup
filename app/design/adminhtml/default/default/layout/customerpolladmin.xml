@@ -2,7 +2,7 @@
 <layout>
     <adminhtml_web_index>
         <reference name="content">
-            <block type="core/template" name="customer_poll" template="customerpoll/poll.phtml" />
+            <block type="customerpoll/customerpoll" name="customer_poll" template="customerpoll/poll.phtml" />
         </reference>
     </adminhtml_web_index>
 </layout>
