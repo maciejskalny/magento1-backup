@@ -24,7 +24,10 @@ class Virtua_CustomerPoll_IndexController extends Mage_Core_Controller_Front_Act
     {
         $this->loadLayout();
         $this->renderLayout();
+    }
 
+    public function saveAction()
+    {
         $model = Mage::getModel('customerpoll/customerpoll');
         $vote = Mage::app()->getRequest()->getParam('storepoll');
 
@@ -42,34 +45,10 @@ class Virtua_CustomerPoll_IndexController extends Mage_Core_Controller_Front_Act
             }
 
             Mage::getSingleton('core/session')->addSuccess('Success Message');
-            $this->_redirect('customerpoll');
         } else {
             Mage::getSingleton('core/session')->addError('Error Message');
         }
 
-        //$this->saveAction();
-        //$this->_redirect('customer/account/login');
+        $this->_redirect('customerpoll');
     }
-
-
-
-//    public function saveAction()
-//    {
-//        $model = Mage::getModel('customerpoll/customerpoll');
-//        $vote = Mage::app()->getRequest()->getParam('storepoll');
-//
-//        if ($vote == 'yes' || $vote == 'no') {
-//            if (empty($model->load($vote, 'option')->getOrigData())) {
-//                $data = array(
-//                    'option' => $vote,
-//                    'count' => 1
-//                );
-//                $model->setData($data)->save();
-//            } else {
-//                $count = (int)$model->load($vote, 'option')->getOrigData()['count'];
-//                $count = $count + 1;
-//                $model->load($vote, 'option')->setData('count', $count)->save();
-//            }
-//        }
-//    }
 }
