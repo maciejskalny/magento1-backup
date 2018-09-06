@@ -13,9 +13,9 @@
  */
 
 /**
- * Class Virtua_CustomerPoll_Adminhtml_WebController
+ * Class Virtua_CustomerPoll_Adminhtml_AdminCustomerPollController
  */
-class Virtua_CustomerPoll_Adminhtml_WebController extends Mage_Adminhtml_Controller_Action
+class Virtua_CustomerPoll_Adminhtml_AdminCustomerPollController extends Mage_Adminhtml_Controller_Action
 {
     /**
      * Rendering poll layout

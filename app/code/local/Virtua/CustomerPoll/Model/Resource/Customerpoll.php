@@ -13,7 +13,7 @@
  */
 
 /**
- * Class Virtua_CustomerPoll_Model_Mysql4_Customerpoll
+ * Class Virtua_CustomerPoll_Model_Resource_Customerpoll
  */
 class Virtua_CustomerPoll_Model_Resource_Customerpoll extends Mage_Core_Model_Resource_Db_Abstract
 {

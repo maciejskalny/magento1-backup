@@ -1,0 +1,11 @@
+<?php
+echo '<h3>'.$this->__('Is our store performance good?').'</h3>' ?>
+<form method="post" action="<?php Mage::getUrl('customerpoll/index/save') ?>">
+    <label>
+        <input type="radio" name="storepoll" value="yes" required> <?php echo $this->__('Yes') ?>
+    </label>
+    <label>
+        <input type="radio" name="storepoll" value="no" required> <?php echo $this->__('No') ?>
+    </label><br>
+    <input type="submit" value="vote">
+</form>

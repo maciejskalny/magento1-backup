@@ -8,7 +8,7 @@
                 <customermenupoll module="customerpoll">
                     <title>Poll</title>
                     <sort_order>0</sort_order>
-                    <action>adminhtml/web</action>
+                    <action>adminhtml/admincustomerpoll</action>
                 </customermenupoll>
             </children>
         </customermenu>

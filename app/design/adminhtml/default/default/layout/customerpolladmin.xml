@@ -1,8 +1,23 @@
 <?xml version="1.0"?>
 <layout>
-    <adminhtml_web_index>
+    <adminhtml_admincustomerpoll_index>
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/customerpoll.css</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>https://canvasjs.com/assets/script/canvasjs.min.js</name>
+            </action>
+            <!--<action method="addItem">-->
+                <!--<type>external_js</type>-->
+                <!--<name>https://canvasjs.com/assets/script/canvasjs.min.js</name>-->
+                <!--<params/>-->
+            <!--</action>-->
+        </reference>
         <reference name="content">
             <block type="customerpoll/customerpoll" name="customer_poll" template="customerpoll/poll.phtml" />
         </reference>
-    </adminhtml_web_index>
+    </adminhtml_admincustomerpoll_index>
 </layout>
