@@ -1,6 +1,12 @@
 <?xml version="1.0"?>
 <layout version="0.1.0">
     <customerpoll_index_index>
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/validationpoll.js</name>
+            </action>
+        </reference>
         <reference name="content">
             <block type="customerpoll/customerpoll" name="customerpoll" template="customerpoll/index.phtml" />
         </reference>

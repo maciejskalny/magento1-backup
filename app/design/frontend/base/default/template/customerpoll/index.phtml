@@ -1,3 +1,4 @@
+<?php echo $this->getChildHtml('global_messages'); ?>
 <?php
 echo '<h3>'.$this->__('Is our store performance good?').'</h3>' ?>
 <form method="post" action="<?php Mage::getUrl('customerpoll/index/save') ?>">
@@ -7,5 +8,5 @@ echo '<h3>'.$this->__('Is our store performance good?').'</h3>' ?>
     <label>
         <input type="radio" name="storepoll" value="no" required> <?php echo $this->__('No') ?>
     </label><br>
-    <input type="submit" value="vote">
+    <input type="submit" value="vote" onclick="validateForm()">
 </form>
