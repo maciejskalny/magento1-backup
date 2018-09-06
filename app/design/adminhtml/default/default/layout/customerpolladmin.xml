@@ -12,7 +12,7 @@
             </action>
         </reference>
         <reference name="content">
-            <block type="customerpoll/customerpoll" name="customer_poll" template="customerpoll/poll.phtml" />
+            <block type="customerpoll/customerpoll" name="customer_poll" template="customerpolladmin/poll.phtml" />
         </reference>
     </adminhtml_admincustomerpoll_index>
 </layout>

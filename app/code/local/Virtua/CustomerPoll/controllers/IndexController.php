@@ -44,9 +44,9 @@ class Virtua_CustomerPoll_IndexController extends Mage_Core_Controller_Front_Act
                 $model->load($vote, 'option')->setData('count', $count)->save();
             }
 
-            Mage::getSingleton('core/session')->addSuccess('Success Message');
+            Mage::getSingleton('core/session')->addSuccess('Success! Your vote has been saved.');
         } else {
-            Mage::getSingleton('core/session')->addError('Error Message');
+            Mage::getSingleton('core/session')->addError('Error! You can choose only yes or no.');
         }
 
         $this->_redirect('customerpoll');

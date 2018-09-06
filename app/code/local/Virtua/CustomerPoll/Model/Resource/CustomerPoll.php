@@ -13,9 +13,9 @@
  */
 
 /**
- * Class Virtua_CustomerPoll_Model_Resource_Customerpoll
+ * Class Virtua_CustomerPoll_Model_Resource_CustomerPoll
  */
-class Virtua_CustomerPoll_Model_Resource_Customerpoll extends Mage_Core_Model_Resource_Db_Abstract
+class Virtua_CustomerPoll_Model_Resource_CustomerPoll extends Mage_Core_Model_Resource_Db_Abstract
 {
     /**
      * Class constructor
