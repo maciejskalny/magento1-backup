@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+/*
+ * This file is a config of module which is responsible for order message
+ *
+ * PHP version 7.1.21
+ *
+ * @category  Module config
+ * @package   Virtua_Internship
+ * @author    Maciej Skalny <contact@wearevirtua.com>
+ * @copyright 2018 Copyright (c) Virtua (http://wwww.wearevirtua.com)
+ * @license   GPL http://opensource.org/licenses/gpl-license.php
+ * @link      https://bitbucket.org/wearevirtua/magento1ms/
+ */
+-->
+<config>
+    <modules>
+        <Virtua_OrderMessage>
+            <version>0.1.0</version>
+        </Virtua_OrderMessage>
+    </modules>
+    <global>
+        <helpers>
+            <ordermessage>
+                <class>Virtua_OrderMessage_Helper</class>
+            </ordermessage>
+        </helpers>
+    </global>
+</config>
