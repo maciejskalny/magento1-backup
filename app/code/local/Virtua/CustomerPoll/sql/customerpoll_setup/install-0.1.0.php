@@ -24,6 +24,10 @@ if (!$installer->tableExists('customerpoll/customerpoll')) {
                 'primary' => true,
                 'identity' => true,
             ), 'Option ID')
+        ->addColumn('customerpoll_id', Varien_Db_Ddl_Table::TYPE_INTEGER, 11,
+            array(
+                'nullable' => false,
+            ), 'Poll ID')
         ->addColumn('option', Varien_Db_Ddl_Table::TYPE_VARCHAR, 255,
             array(
                 'nullable' => false,

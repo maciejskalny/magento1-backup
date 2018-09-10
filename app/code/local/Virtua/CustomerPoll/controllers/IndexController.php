@@ -30,18 +30,26 @@ class Virtua_CustomerPoll_IndexController extends Mage_Core_Controller_Front_Act
     {
         $model = Mage::getModel('customerpoll/customerpoll');
         $vote = Mage::app()->getRequest()->getParam('storepoll');
+        $poll = Mage::app()->getRequest()->getParam('pollnumber');
 
         if ($vote == 'yes' || $vote == 'no') {
-            if (empty($model->load($vote, 'option')->getOrigData())) {
+
+            $entity = $model->getCollection()
+                ->addFieldToFilter('customerpoll_id', $poll)
+                ->addFieldToFilter('option', $vote)
+                ->getFirstItem();
+
+            if ($entity['option'] == null) {
                 $data = array(
+                    'customerpoll_id' => $poll,
                     'option' => $vote,
                     'count' => 1
                 );
                 $model->setData($data)->save();
             } else {
-                $count = (int)$model->load($vote, 'option')->getOrigData()['count'];
+                $count = (int)$entity['count'];
                 $count = $count + 1;
-                $model->load($vote, 'option')->setData('count', $count)->save();
+                $entity->setData('count', $count)->save();
             }
 
             Mage::getSingleton('core/session')->addSuccess('Success! Your vote has been saved.');
@@ -50,5 +58,33 @@ class Virtua_CustomerPoll_IndexController extends Mage_Core_Controller_Front_Act
         }
 
         $this->_redirect('customerpoll');
+    }
+
+    public function saveAnswer($vote, $poll, $model)
+    {
+        if ($vote == 'yes' || $vote == 'no') {
+
+            $entity = $model->getCollection()
+                ->addFieldToFilter('customerpoll_id', $poll)
+                ->addFieldToFilter('option', $vote)
+                ->getFirstItem();
+
+            if ($entity['option'] == null) {
+                $data = array(
+                    'customerpoll_id' => $poll,
+                    'option' => $vote,
+                    'count' => 1
+                );
+                $model->setData($data)->save();
+            } else {
+                $count = (int)$entity['count'];
+                $count = $count + 1;
+                $entity->setData('count', $count)->save();
+            }
+
+            Mage::getSingleton('core/session')->addSuccess('Success! Your vote has been saved.');
+        } else {
+            Mage::getSingleton('core/session')->addError('Error! You can choose only yes or no.');
+        }
     }
 }
