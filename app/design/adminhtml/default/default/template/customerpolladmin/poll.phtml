@@ -1,29 +1,37 @@
 <?php
-$answers = $this->getResults();
 
-$dataPoints = array(
-    array("y" => $answers['yes'], "label" => "Yes" ),
-    array("y" => $answers['no'], "label" => "No" )
-);
-?>
-   <script>
-        window.onload = function() {
+$questions = $this->getQuestions();
+$ids = $this->getQuestionsIds();
 
-            var chart = new CanvasJS.Chart("chartContainer", {
-                animationEnabled: true,
-                theme: "light2",
-                title:{
-                    text: "Poll: Is our store performance good?"
-                },
-                data: [{
-                    type: "column",
-                    yValueFormatString: "#,##0.## tonnes",
-                    dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
-                }]
-            });
-            chart.render();
+foreach ($ids as $id) {
+    $answers = $this->getResults($id);
 
-        }
+    $dataPoints = array(
+        array("y" => $answers['yes'], "label" => "Yes"),
+        array("y" => $answers['no'], "label" => "No")
+    );
+    ?>
+
+    <?php
+    echo '<div id="chartContainer' . $id . '" class="chart"></div>';
+    ?>
+
+    <script>
+        var chart<?php echo $id ?> = new CanvasJS.Chart("chartContainer<?php echo $id ?>", {
+            animationEnabled: true,
+            theme: "light2",
+            title: {
+                text: <?php echo json_encode($questions[$id-1]) ?>
+            },
+            data: [{
+                type: "column",
+                yValueFormatString: "#,##0.## tonnes",
+                dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
+            }]
+        });
+        chart<?php echo $id ?>.render();
     </script>
 
-<div id="chartContainer"></div>
+    <?php
+}
+    ?>

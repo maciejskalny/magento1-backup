@@ -1,5 +1,5 @@
-#chartContainer{
-    width: 60%;
-    height: 375px;
+.chart{
+    width: 40%;
+    height: 205px;
     margin:0 auto;
 }
