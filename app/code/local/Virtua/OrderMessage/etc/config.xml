@@ -19,6 +19,15 @@
             <version>0.1.0</version>
         </Virtua_OrderMessage>
     </modules>
+    <frontend>
+        <layout>
+            <updates>
+                <ordermessage module="Virtua_OrderMessage">
+                    <file>ordermessage.xml</file>
+                </ordermessage>
+            </updates>
+        </layout>
+    </frontend>
     <global>
         <helpers>
             <ordermessage>
