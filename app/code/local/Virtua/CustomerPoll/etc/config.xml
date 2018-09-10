@@ -59,6 +59,9 @@
                     <customerpoll>
                         <table>customerpoll</table>
                     </customerpoll>
+                    <customerpollquestions>
+                        <table>customerpollquestions</table>
+                    </customerpollquestions>
                 </entities>
             </customerpoll_resource>
         </models>

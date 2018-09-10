@@ -1,25 +1,19 @@
-<?php echo '<h3>'.$this->__('Is our store performance good?').'</h3>' ?>
-<form method="post" action="<?php Mage::getBaseUrl()?>/customerpoll/index/save">
-    <label>
-        <input type="radio" name="storepoll" value="yes" required> <?php echo $this->__('Yes') ?>
-    </label>
-    <label>
-        <input type="radio" name="storepoll" value="no" required> <?php echo $this->__('No') ?>
-    </label><br>
-    <input type="hidden" name="pollnumber" value="1">
-    <input type="submit" value="vote" onclick="validateForm()">
-</form>
+<?php
+$questions = $this->getQuestions()['questions'];
+$ids = $this->getQuestions()['ids'];
 
-<br><br>
+$formNumber = 0;
 
-<?php echo '<h3>'.$this->__('Is our store performance good?').'</h3>' ?>
-<form method="post" action="<?php Mage::getBaseUrl()?>/customerpoll/index/save">
-    <label>
-        <input type="radio" name="storepoll" value="yes" required> <?php echo $this->__('Yes') ?>
-    </label>
-    <label>
-        <input type="radio" name="storepoll" value="no" required> <?php echo $this->__('No') ?>
-    </label><br>
-    <input type="hidden" name="pollnumber" value="2">
-    <input type="submit" value="vote" onclick="validateForm()">
-</form>
+foreach ($questions as $row)
+{
+    echo '<h3>'.$row.'</h3>';
+
+    echo '<form method="post" action="'.Mage::getBaseUrl().'/customerpoll/index/save">
+            <label><input type="radio" name="storepoll" value="yes" required>'.$this->__('Yes').'</label><br>
+            <label><input type="radio" name="storepoll" value="no" required>'.$this->__('No').'</label><br>
+            <input type="hidden" name="pollnumber" value="'.$ids[$formNumber].'">
+            <input type="submit" value="vote" onclick="validateForm()"></form>';
+
+    $formNumber++;
+}
+?>

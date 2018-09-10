@@ -35,4 +35,18 @@ class Virtua_CustomerPoll_Block_CustomerPoll extends Mage_Core_Block_Template
 
         return $answers;
     }
+
+    public function getQuestions()
+    {
+        $model = Mage::getModel('customerpoll/customerpollquestions');
+        $collection = $model->getCollection();
+
+        $questions = $collection->getColumnValues('question');
+        $ids = $collection->getColumnValues('customerpoll_id');
+
+        $select['questions'] = $questions;
+        $select['ids'] = $ids;
+
+        return $select;
+    }
 }
