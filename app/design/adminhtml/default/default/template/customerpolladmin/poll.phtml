@@ -12,16 +12,14 @@ foreach ($ids as $id) {
     );
     ?>
 
-    <?php
-    echo '<div id="chartContainer' . $id . '" class="chart"></div>';
-    ?>
+    <?php echo '<div id="chartContainer' . $id . '" class="chart"></div>'; ?>
 
     <script>
         var chart<?php echo $id ?> = new CanvasJS.Chart("chartContainer<?php echo $id ?>", {
             animationEnabled: true,
             theme: "light2",
             title: {
-                text: <?php echo json_encode($questions[$id-1]) ?>
+                text: <?php echo json_encode($questions[$id - 1]) ?>
             },
             data: [{
                 type: "column",
@@ -32,6 +30,4 @@ foreach ($ids as $id) {
         chart<?php echo $id ?>.render();
     </script>
 
-    <?php
-}
-    ?>
+<?php } ?>

@@ -24,9 +24,6 @@ class Virtua_CustomerPoll_IndexController extends Mage_Core_Controller_Front_Act
     {
         $this->loadLayout();
         $this->renderLayout();
-
-        $collectionQuestions = Mage::getModel('customerpoll/customerpollquestions')->getCollection();
-        $poll = $collectionQuestions->addFieldToFilter('customerpoll_id', 12)->getColumnValues('question');
     }
 
     /**

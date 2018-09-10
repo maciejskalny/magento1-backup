@@ -1,6 +1,6 @@
 <?php
 /**
- * This file creates table in database.
+ * Installing module, creating tables in database.
  *
  * PHP version 7.1.21
  *
