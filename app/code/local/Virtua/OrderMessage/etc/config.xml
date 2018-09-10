@@ -39,5 +39,39 @@
                 <class>Virtua_OrderMessage_Helper</class>
             </ordermessage>
         </helpers>
+        <models>
+            <ordermessage>
+                <class>Virtua_OrderMessage_Model</class>
+                <resourceModel>ordermessage_resource</resourceModel>
+            </ordermessage>
+            <ordermessage_resource>
+                <class>Virtua_OrderMessage_Model_Resource</class>
+                <entities>
+                    <ordermessage>
+                        <table>ordermessage</table>
+                    </ordermessage>
+                </entities>
+            </ordermessage_resource>
+        </models>
+        <resources>
+            <ordermessage_setup>
+                <setup>
+                    <module>Virtua_OrderMessage</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </ordermessage_setup>
+            <ordermessage_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </ordermessage_write>
+            <ordermessage_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </ordermessage_read>
+        </resources>
     </global>
 </config>
