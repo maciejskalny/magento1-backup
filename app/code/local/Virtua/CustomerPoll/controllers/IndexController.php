@@ -24,6 +24,9 @@ class Virtua_CustomerPoll_IndexController extends Mage_Core_Controller_Front_Act
     {
         $this->loadLayout();
         $this->renderLayout();
+
+        $collectionQuestions = Mage::getModel('customerpoll/customerpollquestions')->getCollection();
+        $poll = $collectionQuestions->addFieldToFilter('customerpoll_id', 12)->getColumnValues('question');
     }
 
     /**
@@ -33,32 +36,39 @@ class Virtua_CustomerPoll_IndexController extends Mage_Core_Controller_Front_Act
     {
         $model = Mage::getModel('customerpoll/customerpoll');
         $vote = Mage::app()->getRequest()->getParam('storepoll');
-        $poll = Mage::app()->getRequest()->getParam('pollnumber');
+        $pollNumber = Mage::app()->getRequest()->getParam('pollnumber');
 
-        if ($vote == 'yes' || $vote == 'no') {
-            $entity = $model->getCollection()
-                ->addFieldToFilter('customerpoll_id', $poll)
-                ->addFieldToFilter('option', $vote)
-                ->getFirstItem();
+        $collectionQuestions = Mage::getModel('customerpoll/customerpollquestions')->getCollection();
+        $poll = $collectionQuestions->addFieldToFilter('customerpoll_id', $pollNumber)->getColumnValues('question');
 
-            if ($entity['option'] == null) {
-                $data = array(
-                    'customerpoll_id' => $poll,
-                    'option' => $vote,
-                    'count' => 1
-                );
-                $model->setData($data)->save();
+        if (!empty($poll)) {
+            if ($vote == 'yes' || $vote == 'no') {
+                $entity = $model->getCollection()
+                    ->addFieldToFilter('customerpoll_id', $pollNumber)
+                    ->addFieldToFilter('option', $vote)
+                    ->getFirstItem();
+
+                if ($entity['option'] == null) {
+                    $data = array(
+                        'customerpoll_id' => $pollNumber,
+                        'option' => $vote,
+                        'count' => 1
+                    );
+                    $model->setData($data)->save();
+                } else {
+                    $count = (int)$entity['count'];
+                    $count = $count + 1;
+                    $entity->setData('count', $count)->save();
+                }
+
+                Mage::getSingleton('core/session')->addSuccess('Success! Your vote has been saved.');
             } else {
-                $count = (int)$entity['count'];
-                $count = $count + 1;
-                $entity->setData('count', $count)->save();
+                Mage::getSingleton('core/session')->addError('Error! You can choose only yes or no.');
             }
 
-            Mage::getSingleton('core/session')->addSuccess('Success! Your vote has been saved.');
+            $this->_redirect('customerpoll');
         } else {
-            Mage::getSingleton('core/session')->addError('Error! You can choose only yes or no.');
+            Mage::getSingleton('core/session')->addError('Error! There is no question with that id.');
         }
-
-        $this->_redirect('customerpoll');
     }
 }
