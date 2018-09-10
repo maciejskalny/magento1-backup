@@ -29,6 +29,11 @@
         </layout>
     </frontend>
     <global>
+        <blocks>
+            <ordermessage>
+                <class>Virtua_OrderMessage_Block</class>
+            </ordermessage>
+        </blocks>
         <helpers>
             <ordermessage>
                 <class>Virtua_OrderMessage_Helper</class>
