@@ -10,8 +10,8 @@ foreach ($questions as $row)
     echo '<form method="post" action="'.Mage::getBaseUrl().'/customerpoll/index/save">
             <label><input type="radio" name="storepoll" value="yes" required>'.$this->__('Yes').'</label><br>
             <label><input type="radio" name="storepoll" value="no" required>'.$this->__('No').'</label><br>
-            <input type="hidden" name="pollnumber" value="'.$ids[$formNumber].'">
-            <input type="submit" value="vote" onclick="validateForm()"></form>';
+            <input type="hidden" name="pollnumber" value="'.$ids[$formNumber].'"><br>
+            <input type="submit" value="vote" onclick="validateForm()"></form><br><br>';
 
     $formNumber++;
 }

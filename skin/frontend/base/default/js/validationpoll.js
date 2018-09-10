@@ -10,6 +10,6 @@ function validateForm() {
         i++;
     }
 
-    if (!formValid) alert("Must choose between yes or no!");
+    if (!formValid) alert("You must choose something!");
     return formValid;
 }
