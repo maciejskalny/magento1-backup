@@ -18,5 +18,35 @@
  */
 class Virtua_OrderMessage_Test_Block_Adminhtml_Order_Grid extends Mage_Adminhtml_Block_Sales_Order_Grid
 {
+    protected function _prepareCollection()
+    {
+        $collection = Mage::getResourceModel($this->_getCollectionClass());
 
+        $collection->getSelect()->join('ordermessage', 'main_table.entity_id = ordermessage.order_id',array('order_message' => 'message', 'topic' => 'topic'));
+
+        $this->setCollection($collection);
+
+        return Mage_Adminhtml_Block_Widget_Grid::_prepareCollection();
+    }
+
+    protected function _prepareColumns()
+    {
+        $this->addColumnAfter('topic', array(
+            'header' => Mage::helper('Sales')->__('Topic'),
+            'width' => '100px',
+            'index' => 'topic',
+            'type' => 'text',
+            'filter_index' => 'ordermessage.topic',
+        ), 'shipping_name');
+
+        $this->addColumnAfter('message', array(
+            'header' => Mage::helper('Sales')->__('Message'),
+            'width' => '100px',
+            'index' => 'order_message',
+            'type' => 'text',
+            'filter_index' => 'ordermessage.message',
+        ), 'topic');
+
+        return parent::_prepareColumns();
+    }
 }

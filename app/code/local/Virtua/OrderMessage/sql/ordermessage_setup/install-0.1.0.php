@@ -32,6 +32,11 @@ if (!$installer->tableExists('ordermessage/ordermessage')) {
             array(
                 'nullable' => false,
             ), 'Customer ID')
+        ->addColumn('topic', Varien_Db_Ddl_Table::TYPE_VARCHAR, 255,
+            array(
+                'nullable' => false,
+                'default' => '',
+            ), 'Topic')
         ->addColumn('message', Varien_Db_Ddl_Table::TYPE_VARCHAR, 255,
             array(
                 'nullable' => false,
