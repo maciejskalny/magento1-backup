@@ -21,8 +21,11 @@ class Virtua_OrderMessage_Test_Block_Adminhtml_Order_Grid extends Mage_Adminhtml
     protected function _prepareCollection()
     {
         $collection = Mage::getResourceModel($this->_getCollectionClass());
+        $itemModel            = Mage::getModel('sales/order_item');
+        $itemResource         = $itemModel->getResource();
+        $ordermessage = $itemResource->getTable('ordermessage/ordermessage');
 
-        $collection->getSelect()->join('ordermessage', 'main_table.entity_id = ordermessage.order_id',array('order_message' => 'message', 'topic' => 'topic'));
+        $collection->getSelect()->joinLeft(array('ordermessage' => $ordermessage), 'main_table.entity_id = ordermessage.order_id', array('order_message' => 'message', 'topic' => 'topic'));
 
         $this->setCollection($collection);
 
