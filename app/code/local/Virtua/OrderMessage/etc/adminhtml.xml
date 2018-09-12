@@ -1,5 +1,16 @@
 <?xml version="1.0"?>
 <config>
+    <menu>
+        <sales>
+            <children>
+                <customermenupoll module="ordermessage">
+                    <title>Order Message Topic</title>
+                    <sort_order>2</sort_order>
+                    <action>adminhtml/admincustomerpoll</action>
+                </customermenupoll>
+            </children>
+        </sales>
+    </menu>
     <acl>
         <resources>
             <admin>
