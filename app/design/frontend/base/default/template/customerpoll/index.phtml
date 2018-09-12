@@ -1,18 +1,12 @@
 <?php
-$questions = $this->getQuestions();
-$ids = $this->getQuestionsIds();
-$formNumber = 0;
-
-foreach ($questions as $row)
+foreach ($this->getQuestions() as $row)
 {
-    echo '<h3>'.$row.'</h3>';
+    echo '<h3>'.$row['question'].'</h3>';
 
     echo '<form method="post" action="'.Mage::getBaseUrl().'/customerpoll/index/save">
             <label><input type="radio" name="storepoll" value="yes" required>'.$this->__('Yes').'</label><br>
             <label><input type="radio" name="storepoll" value="no" required>'.$this->__('No').'</label><br>
-            <input type="hidden" name="pollnumber" value="'.$ids[$formNumber].'"><br>
+            <input type="hidden" name="pollnumber" value="'.$row['customerpoll_id'].'"><br>
             <input type="submit" value="vote" onclick="validateForm()"></form><br><br>';
-
-    $formNumber++;
 }
 ?>

@@ -1,10 +1,7 @@
 <?php
 
-$questions = $this->getQuestions();
-$ids = $this->getQuestionsIds();
-
-foreach ($ids as $id) {
-    $answers = $this->getResults($id);
+foreach ($this->getQuestions() as $row) {
+    $answers = $this->getResults($row['customerpoll_id']);
 
     $dataPoints = array(
         array("y" => $answers['yes'], "label" => "Yes"),
@@ -12,14 +9,14 @@ foreach ($ids as $id) {
     );
     ?>
 
-    <?php echo '<div id="chartContainer' . $id . '" class="chart"></div>'; ?>
+    <?php echo '<div id="chartContainer' . $row['customerpoll_id'] . '" class="chart"></div>'; ?>
 
     <script>
-        var chart<?php echo $id ?> = new CanvasJS.Chart("chartContainer<?php echo $id ?>", {
+        var chart<?php echo $row['customerpoll_id'] ?> = new CanvasJS.Chart("chartContainer<?php echo $row['customerpoll_id'] ?>", {
             animationEnabled: true,
             theme: "light2",
             title: {
-                text: <?php echo json_encode($questions[$id - 1]) ?>
+                text: <?php echo json_encode($row['question']) ?>
             },
             data: [{
                 type: "column",
@@ -27,7 +24,7 @@ foreach ($ids as $id) {
                 dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
             }]
         });
-        chart<?php echo $id ?>.render();
+        chart<?php echo $row['customerpoll_id'] ?>.render();
     </script>
 
 <?php } ?>
