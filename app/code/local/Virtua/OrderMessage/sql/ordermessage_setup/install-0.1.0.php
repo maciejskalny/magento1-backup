@@ -32,16 +32,33 @@ if (!$installer->tableExists('ordermessage/ordermessage')) {
             array(
                 'nullable' => false,
             ), 'Customer ID')
-        ->addColumn('topic', Varien_Db_Ddl_Table::TYPE_VARCHAR, 255,
+        ->addColumn('topic_id', Varien_Db_Ddl_Table::TYPE_INTEGER, 11,
             array(
                 'nullable' => false,
-                'default' => '',
-            ), 'Topic')
+            ), 'Topic ID')
         ->addColumn('message', Varien_Db_Ddl_Table::TYPE_VARCHAR, 255,
             array(
                 'nullable' => false,
                 'default' => '',
             ), 'Message');
+
+    $installer->getConnection()->createTable($table);
+}
+
+if (!$installer->tableExists('ordermessage/ordermessagetopic')) {
+    $table = $installer->getConnection()->newTable($installer->getTable('ordermessagetopic'))
+        ->addColumn('topic_id', Varien_Db_Ddl_Table::TYPE_INTEGER, 11,
+            array(
+                'unsigned' => true,
+                'nullable' => false,
+                'primary' => true,
+                'identity' => true,
+            ), 'Message ID')
+        ->addColumn('topic', Varien_Db_Ddl_Table::TYPE_VARCHAR, 255,
+            array(
+                'nullable' => false,
+                'default' => '',
+            ), 'Topic');
 
     $installer->getConnection()->createTable($table);
 }

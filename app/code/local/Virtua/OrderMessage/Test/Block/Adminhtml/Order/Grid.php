@@ -25,7 +25,7 @@ class Virtua_OrderMessage_Test_Block_Adminhtml_Order_Grid extends Mage_Adminhtml
         $itemResource         = $itemModel->getResource();
         $ordermessage = $itemResource->getTable('ordermessage/ordermessage');
 
-        $collection->getSelect()->joinLeft(array('ordermessage' => $ordermessage), 'main_table.entity_id = ordermessage.order_id', array('order_message' => 'message', 'topic' => 'topic'));
+        $collection->getSelect()->joinLeft(array('ordermessage' => $ordermessage), 'main_table.entity_id = ordermessage.order_id', array('order_message' => 'message', 'topic' => 'topic_id'));
 
         $this->setCollection($collection);
 

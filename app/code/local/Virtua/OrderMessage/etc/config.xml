@@ -55,6 +55,9 @@
                     <ordermessage>
                         <table>ordermessage</table>
                     </ordermessage>
+                    <ordermessagetopic>
+                        <table>ordermessagetopic</table>
+                    </ordermessagetopic>
                 </entities>
             </ordermessage_resource>
         </models>
