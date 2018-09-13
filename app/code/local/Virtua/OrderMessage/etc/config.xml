@@ -88,6 +88,9 @@
             <ordermessage>
                 <class>Virtua_OrderMessage_Block</class>
             </ordermessage>
+            <ordermessage_adminhtml>
+                <class>Virtua_OrderMessage_Block_Adminhtml</class>
+            </ordermessage_adminhtml>
             <adminhtml>
                 <rewrite>
                     <sales_order_grid>Virtua_OrderMessage_Test_Block_Adminhtml_Order_Grid</sales_order_grid>
@@ -148,4 +151,36 @@
             </sales_order_save_after>
         </events>
     </global>
+    <admin>
+        <routers>
+
+            <!-- This is the alias for this router. -->
+            <virtua_ordermessage_admin>
+
+                <!--
+                This basically informs Magento to use the
+                admin scope for requests to this router.
+                -->
+                <use>admin</use>
+
+                <args>
+                    <!--
+                    This tells Magento where to find
+                    adminhtml controllers for this module.
+                    -->
+                    <module>Virtua_OrderMessage_Adminhtml</module>
+
+                    <!-- This is the term used in the actual URL. -->
+                    <frontName>ordermessage-admin</frontName>
+                </args>
+
+            </virtua_ordermessage_admin>
+
+        </routers>
+    </admin>
 </config>
+
+
+
+
+

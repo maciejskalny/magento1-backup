@@ -4,7 +4,19 @@ class Virtua_OrderMessage_Block_Adminhtml_OrderMessage_Edit_Form extends Mage_Ad
 {
     protected function _prepareForm()
     {
-        $form = new Varien_Data_Form();
+        $form = new Varien_Data_Form(array(
+            'id' => 'edit_form',
+            'action' => $this->getUrl(
+                'virtua_ordermessage_admin/ordermessage/save',
+                array(
+                    '_current' => true,
+                    'continue' => 0,
+                )
+            ),
+            'method' => 'post',
+        ));
+
+        $form->setUseContainer(true);
         $this->setForm($form);
 
         $fieldset = $form->addFieldset('ordermessage_form', array('legend'=>Mage::helper('ordermessage')->__('Item information')));
