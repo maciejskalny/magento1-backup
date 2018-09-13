@@ -20,6 +20,15 @@
         </Virtua_OrderMessage>
     </modules>
     <frontend>
+        <routers>
+            <ordermessage>
+            <use>standard</use>
+            <args>
+                <module>Virtua_OrderMessage</module>
+                <frontName>ordermessage</frontName>
+            </args>
+            </ordermessage>
+        </routers>
         <layout>
             <updates>
                 <ordermessage module="Virtua_OrderMessage">
@@ -28,6 +37,52 @@
             </updates>
         </layout>
     </frontend>
+    <admin>
+        <routers>
+            <ordermessage>
+                <use>admin</use>
+                <args>
+                    <module>Virtua_OrderMessage</module>
+                    <frontName>ordermessage</frontName>
+                </args>
+            </ordermessage>
+        </routers>
+    </admin>
+    <adminhtml>
+        <menu>
+            <sales>
+                <children>
+                    <items module="ordermessage">
+                        <title>Order Topics</title>
+                        <sort_order>0</sort_order>
+                        <action>ordermessage/adminhtml_ordermessage</action>
+                    </items>
+                </children>
+            </sales>
+        </menu>
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <ordermessage>
+                            <title>OrderMessage Module</title>
+                            <sort_order>200</sort_order>
+                        </ordermessage>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        <layout>
+            <updates>
+                <ordermessage>
+                <file>ordermessage.xml</file>
+                </ordermessage>
+            </updates>
+        </layout>
+    </adminhtml>
     <global>
         <blocks>
             <ordermessage>
