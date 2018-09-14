@@ -1,19 +1,19 @@
-<br>
-<form method="post">
-    <select name="topic">
-        <?php
+<!--<br>-->
+<!--<form method="post" id="testuje">-->
+<!--    <select name="topic">-->
+<!--        --><?php
+//
+//        foreach ($this->prepareTopics() as $row) {
+//            echo '<option value="'.$row['topic_id'].'">'.$row['topic'].'</option>';
+//        }
+//
+//        ?>
+<!--    </select>-->
+<!--    <br><br>-->
+<!--    <input type="text" name="ordermessage" placeholder="Your message">-->
+<!--</form>-->
+<!--<br>-->
 
-        foreach ($this->prepareTopics() as $row) {
-            echo '<option value="'.$row['topic_id'].'">'.$row['topic'].'</option>';
-        }
-
-        ?>
-    </select>
-    <br><br>
-    <input type="text" placeholder="Your message">
-</form>
-<br>
-<!---->
 <!--<li class="fields">-->
 <!--    <div class="field">-->
 <!--        <label for="billing:ssn" class="required"><em>*</em>--><?php //echo $this->__('SSN') ?><!--</label>-->
@@ -22,3 +22,20 @@
 <!--        </div>-->
 <!--    </div>-->
 <!--</li>-->
+
+<div class="checkout-agreements">
+    <input type="text" name="namespace_reviewfield" id="namespace_reviewfield"/>
+    <label for="namespace_reviewfield">Please specify Foo</label>
+</div>
+
+<script type="text/javascript">
+    // Add our field to the data submitted by Review.save()
+    Review.prototype.save = Review.prototype.save.wrap(function(orig) {
+        var form = $(this.agreementsForm) ? $(this.agreementsForm) : $(payment.form);
+        if (form) {
+            var myfield = $('namespace_reviewfield');
+            form.insert(myfield);
+        }
+        orig();
+    });
+</script>

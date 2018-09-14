@@ -140,12 +140,12 @@
             </ordermessage_read>
         </resources>
         <events>
-            <sales_order_place_before> <!-- Event called after Order Object is loaded -->
+            <sales_order_place_before>
                 <observers>
                     <sales_order_place_before>
                         <type>singleton</type>
-                        <class>Virtua_OrderMessage_Model_Observer</class> <!-- Over Model Class -->
-                        <method>saveOrderMessage</method> <!-- name of function -->
+                        <class>Virtua_OrderMessage_Model_Observer</class>
+                        <method>saveOrderMessage</method>
                     </sales_order_place_before>
                 </observers>
             </sales_order_place_before>

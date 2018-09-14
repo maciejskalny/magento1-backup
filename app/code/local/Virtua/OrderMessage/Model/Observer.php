@@ -10,24 +10,29 @@ class Virtua_OrderMessage_Model_Observer extends Varien_Event_Observer
      */
     public function saveOrderMessage($observer)
     {
-        Mage::log(Mage::app()->getRequest()->getParams());
-//        $order = $evt->getOrder();
-//        $model = Mage::getModel('custom/custom_order');
-//        $data = $model->getByOrder($order->getId());
-//        foreach($data as $key => $value){
-//            $order->setData($key,$value);
-//        }
+        $message = 'test';
 
         $order = $observer->getEvent()->getOrder();
-        $orderIds = $order->getId();
 
-        Mage::log($orderIds);
+        $orderId = $order->getId();
+        $orderCustomer = $order->getCustomerId();
+
+        Mage::log(Mage::app()->getRequest()->getParams(), null, 'system.log', true);
+        //Mage::log($test, null, 'system.log', true);
+
+        //$param = Mage::app()->getRequest()->getParam('namespace_reviewfield', '');
+
+        $param = Mage::app()->getRequest()->getParam('namespace_reviewfield', '');
+        //$observer->getEvent-getOrder()->setMyField((string) $param);
+
+
+        //$observer->getOrder()->setMyField((string) $param);
 
         $data = array(
-            'order_id' => $orderIds,
-            'customer_id' => 2,
+            'order_id' => $orderId,
+            'customer_id' => $orderCustomer,
             'topic_id' => 3,
-            'message' => 'To jest testowa wiadomosc'
+            'message' => $param
         );
 
         $model = Mage::getModel('ordermessage/ordermessage');
