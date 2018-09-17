@@ -5,7 +5,7 @@ class Virtua_LatestOrders_IndexController extends Mage_Core_Controller_Front_Act
     public function indexAction()
     {
         if(!Mage::getSingleton('customer/session')->isLoggedIn()){
-            $this->_redirect("/");
+            $this->_redirect("customer/account/login");
         }
 
         $this->loadLayout();

@@ -5,20 +5,36 @@ class Virtua_LatestOrders_Block_LatestOrders extends Mage_Core_Block_Template
 
     public function prepareLatestClients()
     {
-        $model = Mage::getModel('sales/order');
-        $collection = $model->getCollection();
+        $limit = 2;
+        $modelOrders = Mage::getModel('sales/order');
+        $collectionOrders = $modelOrders->getCollection();
+        $modelCustomers = Mage::getModel('customer/customer');
+        $lastItemId = (int)$collectionOrders->getLastItem()->getId();
 
-        $lastItemId = (int)$collection->getLastItem()->getId();
-        $start = $lastItemId - 9;
+        $latestClients = [];
+        $count = 0;
+        for ($i = $lastItemId; $i>0; $i--) {
+            $validation = true;
+            $newClient = $modelOrders->load($i)['customer_email'];
 
-        for($i = $start; $i<=$lastItemId; $i++)
-        {
-            //echo $i."<br>";
-            $tab = $model->load($i);
-            Zend_Debug::dump($tab['base_grand_total']);
+            foreach ($latestClients as $client) {
+                if ($client == $newClient) {
+                    $validation = false;
+                    break;
+                }
+            }
+
+            if ($validation) {
+                $latestClients[$i] = $newClient;
+                $count++;
+                if ($count == $limit) {
+                    break;
+                }
+            }
         }
 
-        //Zend_Debug::dump($lastItemId);
-
+        foreach ($latestClients as $client) {
+            echo $client.'<br><br>';
+        }
     }
 }
