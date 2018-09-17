@@ -1,13 +1,16 @@
 <?xml version="1.0"?>
 <layout version="0.1.0">
-    <checkout_onepage>
+    <checkout_onepage_index>
         <reference name="head">
             <action method="addItem">
                 <type>skin_js</type>
-                <name>js/validationordermessage.js</name>
+                <name>js/addingordermessage.js</name>
             </action>
         </reference>
-    </checkout_onepage>
+        <reference name="before_body_end">
+            <block type="core/template" name="controller_tool_javascript" template="ordermessage/js/addingordermessage.phtml"/>
+        </reference>
+    </checkout_onepage_index>
     <checkout_onepage_review>
         <reference name="checkout.onepage.review.info.items.after">
             <block type="ordermessage/ordermessage" name="ordermessage" template="ordermessage/message.phtml"/>

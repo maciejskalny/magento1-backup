@@ -1,44 +1,53 @@
 <?php
+/**
+ * This file is an event observer.
+ *
+ * PHP version 7.1.21
+ *
+ * @category  Model
+ * @package   Virtua_Internship
+ * @author    Maciej Skalny <contact@wearevirtua.com>
+ * @copyright 2018 Copyright (c) Virtua (http://wwww.wearevirtua.com)
+ * @license   GPL http://opensource.org/licenses/gpl-license.php
+ * @link      https://bitbucket.org/wearevirtua/magento1ms/
+ */
 
+/**
+ * Class Virtua_OrderMessage_Model_Observer
+ */
 class Virtua_OrderMessage_Model_Observer extends Varien_Event_Observer
 {
     /**
-     *
-     * This function is called when $order->load() is done.
-     * Here we read our custom fields value from database and set it in order object.
-     * @param unknown_type $evt
+     * @param $observer
      */
     public function saveOrderMessage($observer)
     {
-        $message = 'test';
+        $collectionTopic = Mage::getModel('ordermessage/ordermessagetopic')->getCollection();
 
-        $order = $observer->getEvent()->getOrder();
-
-        $orderId = $order->getId();
+        $order      = $observer->getEvent()->getOrder();
+        $orderId    = $order->getId();
         $customerId = $order->getCustomerId();
-        $topicId = Mage::app()->getRequest()->getParam('ordermessage-topic', '');
-        $message = Mage::app()->getRequest()->getParam('ordermessage-message', '');
+        $topicId    = Mage::app()->getRequest()->getParam('ordermessage-topic', '');
+        $message    = Mage::app()->getRequest()->getParam('ordermessage-message', '');
 
-        //Mage::log(Mage::app()->getRequest()->getParams(), null, 'system.log', true);
-        //Mage::log($test, null, 'system.log', true);
+        $validation = null;
 
-        //$param = Mage::app()->getRequest()->getParam('namespace_reviewfield', '');
+        if ($topicId != 0 && !empty($collectionTopic->addFieldToFilter('topic_id', $topicId)->getColumnValues('topic')) && $message != null) {
+            $validation = true;
+        } elseif ($topicId == null && $message != null) {
+            $validation = true;
+        }
 
+        if ($validation) {
+            $data = array(
+                'order_id'    => $orderId,
+                'customer_id' => $customerId,
+                'topic_id'    => $topicId,
+                'message'     => $message
+            );
 
-
-        //$observer->getEvent-getOrder()->setMyField((string) $param);
-
-
-        //$observer->getOrder()->setMyField((string) $param);
-
-        $data = array(
-            'order_id' => $orderId,
-            'customer_id' => $customerId,
-            'topic_id' => $topicId,
-            'message' => $message
-        );
-
-        $model = Mage::getModel('ordermessage/ordermessage');
-        $model->setData($data)->save();
+            $modelMessage = Mage::getModel('ordermessage/ordermessage');
+            $modelMessage->setData($data)->save();
+        }
     }
 }

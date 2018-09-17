@@ -1,5 +1,6 @@
 <div class="checkout-agreements">
     <select name="ordermessage-topic" id="ordermessage-topic">
+        <option disabled selected value>Choose topic</option>
         <?php
         foreach ($this->prepareTopics() as $row) {
             echo '<option value="'.$row['topic_id'].'">'.$row['topic'].'</option>';
@@ -8,17 +9,3 @@
     </select>
     <input type="text" placeholder="Your message" name="ordermessage-message" id="ordermessage-message"/>
 </div>
-
-<script type="text/javascript">
-    Review.prototype.save = Review.prototype.save.wrap(function(orig) {
-        var form = $(this.agreementsForm) ? $(this.agreementsForm) : $(payment.form);
-        if (form) {
-            var myfield = $('ordermessage-message');
-            var topic = $('ordermessage-topic');
-            form.insert(myfield);
-            form.insert(topic);
-            form.insert()
-        }
-        orig();
-    });
-</script>
