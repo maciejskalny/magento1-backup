@@ -1,12 +1,6 @@
 <?xml version="1.0"?>
 <layout version="0.1.0">
     <checkout_onepage_index>
-        <reference name="head">
-            <action method="addItem">
-                <type>skin_js</type>
-                <name>js/addingordermessage.js</name>
-            </action>
-        </reference>
         <reference name="before_body_end">
             <block type="core/template" name="controller_tool_javascript" template="ordermessage/js/addingordermessage.phtml"/>
         </reference>

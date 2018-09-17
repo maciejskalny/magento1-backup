@@ -1,13 +1,25 @@
 <script type="text/javascript">
-    Review.prototype.save = Review.prototype.save.wrap(function(orig) {
-        var form = $(this.agreementsForm) ? $(this.agreementsForm) : $(payment.form);
-        if (form) {
-            var message = $('ordermessage-message');
-            var topic = $('ordermessage-topic');
 
-            form.insert(message);
-            form.insert(topic);
+    Review.prototype.save = Review.prototype.save.wrap(function(orig) {
+
+        var topicValue = document.getElementById('ordermessage-topic');
+        topicValue = topicValue.options[topicValue.selectedIndex].value;
+        var messageValue = document.getElementById('ordermessage-message').value;
+
+        if (topicValue != 0 && messageValue == "") {
+            alert('You must write a message if you choose topic!');
+        } else {
+            var form = $(this.agreementsForm) ? $(this.agreementsForm) : $(payment.form);
+
+            if (form) {
+                var message = $('ordermessage-message');
+                var topic = $('ordermessage-topic');
+
+                form.insert(message);
+                form.insert(topic);
+            }
+
+            orig();
         }
-        orig();
     });
 </script>
