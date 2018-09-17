@@ -23,6 +23,7 @@ class Virtua_OrderMessage_Test_Block_Adminhtml_Order_Grid extends Mage_Adminhtml
         $itemModel    = Mage::getModel('sales/order_item');
         $itemResource = $itemModel->getResource();
         $ordermessage = $itemResource->getTable('ordermessage/ordermessage');
+        $ordermessagetopic = $itemResource->getTable('ordermessage/ordermessagetopic');
 
         $collection
             ->getSelect()
@@ -31,9 +32,17 @@ class Virtua_OrderMessage_Test_Block_Adminhtml_Order_Grid extends Mage_Adminhtml
                 'main_table.entity_id = ordermessage.order_id',
                 array(
                     'order_message' => 'message',
-                    'topic'         => 'topic_id'
+                )
+            )
+            ->joinLeft(
+                array('ordermessagetopic' => $ordermessagetopic),
+                'ordermessage.topic_id = ordermessagetopic.topic_id',
+                array(
+                    'topic'         => 'topic'
                 )
             );
+
+
 
         $this->setCollection($collection);
 
@@ -47,7 +56,7 @@ class Virtua_OrderMessage_Test_Block_Adminhtml_Order_Grid extends Mage_Adminhtml
             'width'  => '100px',
             'index'  => 'topic',
             'type'   => 'text',
-            'filter_index' => 'ordermessage.topic',
+            'filter_index' => 'ordermessagetopic.topic',
         ), 'shipping_name');
 
         $this->addColumnAfter('message', array(
