@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <latestorders_index_index>
+        <reference name="content">
+            <block type="latestorders/latestorders" name="latestorders" template="latestorders/index.phtml" />
+        </reference>
+    </latestorders_index_index>
+</layout>

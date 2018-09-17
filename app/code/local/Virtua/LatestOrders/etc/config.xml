@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!--
+/*
+ * This file is a config of module which is responsible for latest orders
+ *
+ * PHP version 7.1.21
+ *
+ * @category  Module config
+ * @package   Virtua_Internship
+ * @author    Maciej Skalny <contact@wearevirtua.com>
+ * @copyright 2018 Copyright (c) Virtua (http://wwww.wearevirtua.com)
+ * @license   GPL http://opensource.org/licenses/gpl-license.php
+ * @link      https://bitbucket.org/wearevirtua/magento1ms/
+ */
+-->
+<config>
+    <modules>
+        <Virtua_LatestOrders>
+            <version>0.1.0</version>
+        </Virtua_LatestOrders>
+    </modules>
+    <frontend>
+        <routers>
+            <latestorders>
+                <use>standard</use>
+                <args>
+                    <module>Virtua_LatestOrders</module>
+                    <frontName>latestorders</frontName>
+                </args>
+            </latestorders>
+        </routers>
+        <layout>
+            <updates>
+                <latestorders module="Virtua_LatestOrders">
+                    <file>latestorders.xml</file>
+                </latestorders>
+            </updates>
+        </layout>
+    </frontend>
+    <global>
+        <blocks>
+            <latestorders>
+                <class>Virtua_LatestOrders_Block</class>
+            </latestorders>
+        </blocks>
+        <helpers>
+            <latestorders>
+                <class>Virtua_LatestOrders_Helper</class>
+            </latestorders>
+        </helpers>
+    </global>
+</config>
