@@ -17,12 +17,15 @@
  */
 class Virtua_OrderMessage_Test_Block_Adminhtml_Order_Grid extends Mage_Adminhtml_Block_Sales_Order_Grid
 {
+    /**
+     * @return Mage_Adminhtml_Block_Widget_Grid
+     */
     protected function _prepareCollection()
     {
-        $collection   = Mage::getResourceModel($this->_getCollectionClass());
-        $itemModel    = Mage::getModel('sales/order_item');
-        $itemResource = $itemModel->getResource();
-        $ordermessage = $itemResource->getTable('ordermessage/ordermessage');
+        $collection        = Mage::getResourceModel($this->_getCollectionClass());
+        $itemModel         = Mage::getModel('sales/order_item');
+        $itemResource      = $itemModel->getResource();
+        $ordermessage      = $itemResource->getTable('ordermessage/ordermessage');
         $ordermessagetopic = $itemResource->getTable('ordermessage/ordermessagetopic');
 
         $collection
@@ -31,7 +34,7 @@ class Virtua_OrderMessage_Test_Block_Adminhtml_Order_Grid extends Mage_Adminhtml
                 array('ordermessage' => $ordermessage),
                 'main_table.entity_id = ordermessage.order_id',
                 array(
-                    'order_message' => 'message',
+                    'order_message'  => 'message',
                 )
             )
             ->joinLeft(
@@ -42,13 +45,14 @@ class Virtua_OrderMessage_Test_Block_Adminhtml_Order_Grid extends Mage_Adminhtml
                 )
             );
 
-
-
         $this->setCollection($collection);
 
         return Mage_Adminhtml_Block_Widget_Grid::_prepareCollection();
     }
 
+    /**
+     * @return Mage_Adminhtml_Block_Sales_Order_Grid
+     */
     protected function _prepareColumns()
     {
         $this->addColumnAfter('topic', array(
