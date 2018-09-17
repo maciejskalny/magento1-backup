@@ -2,24 +2,23 @@
 
 class Virtua_LatestOrders_Block_LatestOrders extends Mage_Core_Block_Template
 {
-    public function prepareLatestOrders()
+
+    public function prepareLatestClients()
     {
-//        $model = Mage::getModel('sales/order');
-//        $collection = $model->getCollection();
-//
-//        $lastItemId = $collection->getLastItem()->getId();
-////        $orders = [];
-//       //Zend_Debug::dump($lastItemId);
-//
-//        //$test = $model->load($lastItemId);
-//
-//
-//        for ($i = 0; $i < 10; $i++) {
-//            $orders[$i] = $model->load($i + 1);
-//        }
-//
-//        foreach ($orders as $order) {
-//            echo 'ID: '.$order['entity_id'].' Total:'.$order['base_grand_total'].'<br><br>';
-//        }
+        $model = Mage::getModel('sales/order');
+        $collection = $model->getCollection();
+
+        $lastItemId = (int)$collection->getLastItem()->getId();
+        $start = $lastItemId - 9;
+
+        for($i = $start; $i<=$lastItemId; $i++)
+        {
+            //echo $i."<br>";
+            $tab = $model->load($i);
+            Zend_Debug::dump($tab['base_grand_total']);
+        }
+
+        //Zend_Debug::dump($lastItemId);
+
     }
 }
