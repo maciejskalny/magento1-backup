@@ -34,7 +34,22 @@ class Virtua_LatestOrders_Block_LatestOrders extends Mage_Core_Block_Template
         }
 
         foreach ($latestClients as $client) {
-            echo $client.'<br><br>';
+            echo '<a href="#">'.$client.'</a><br><br>';
+            $this->prepareClientOrders($client);
+            echo '<br><br>';
         }
     }
+
+    public function prepareClientOrders($email)
+    {
+        $collection = Mage::getModel('sales/order')->getCollection();
+        $client = $collection->addFieldToFilter('customer_email', $email)->getColumnValues('entity_id', 'base_grand_total', 'weight');
+
+        foreach($client as $row)
+        {
+            echo 'ID: '.$row['entity_id'].' Price: '.$row['base_grand_total'].' Weight: '.$row['weight'].'<br>';
+        }
+
+    }
+
 }
