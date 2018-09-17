@@ -1,5 +1,11 @@
 <?xml version="1.0"?>
 <layout version="0.1.0">
+    <default>
+        <reference name="footer">
+
+            <block type="latestorders/latestorders" name="latestorders" template="latestorders/footerlink.phtml" />
+        </reference>
+    </default>
     <latestorders_index_index>
         <reference name="content">
             <block type="latestorders/latestorders" name="latestorders" template="latestorders/index.phtml" />

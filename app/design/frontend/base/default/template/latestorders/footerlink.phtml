@@ -1,0 +1,15 @@
+<?php
+    if(Mage::getSingleton('customer/session')->isLoggedIn()) {
+        ?>
+        <div class="links">
+            <div class="block-title">
+                <strong>
+                    <span>Orders</span>
+                </strong>
+            </div>
+            <ul>
+                <li><a href="/latestorders">Latest orders</a></li>
+            </ul>
+        </div>
+        <?php
+    }
