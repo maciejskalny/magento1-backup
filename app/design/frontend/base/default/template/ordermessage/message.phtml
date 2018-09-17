@@ -1,4 +1,4 @@
-<div class="checkout-agreements">
+<br><div class="checkout-agreements">
     <select name="ordermessage-topic" id="ordermessage-topic">
         <option disabled selected value><?php echo $this->__('Choose topic')?></option>
         <?php
@@ -6,6 +6,6 @@
             echo '<option value="'.$row['topic_id'].'">'.$this->__($row['topic']).'</option>';
         }
         ?>
-    </select>
+    </select><br><br>
     <input type="text" placeholder="<?php echo $this->__('Your message') ?>" name="ordermessage-message" id="ordermessage-message"/>
 </div>
