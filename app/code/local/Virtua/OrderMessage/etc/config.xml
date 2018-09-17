@@ -75,13 +75,6 @@
                 </admin>
             </resources>
         </acl>
-        <layout>
-            <updates>
-                <ordermessage>
-                <file>ordermessage.xml</file>
-                </ordermessage>
-            </updates>
-        </layout>
     </adminhtml>
     <global>
         <blocks>

@@ -1,11 +1,11 @@
 <div class="checkout-agreements">
     <select name="ordermessage-topic" id="ordermessage-topic">
-        <option disabled selected value>Choose topic</option>
+        <option disabled selected value><?php echo $this->__('Choose topic')?></option>
         <?php
         foreach ($this->prepareTopics() as $row) {
-            echo '<option value="'.$row['topic_id'].'">'.$row['topic'].'</option>';
+            echo '<option value="'.$row['topic_id'].'">'.$this->__($row['topic']).'</option>';
         }
         ?>
     </select>
-    <input type="text" placeholder="Your message" name="ordermessage-message" id="ordermessage-message"/>
+    <input type="text" placeholder="<?php echo $this->__('Your message') ?>" name="ordermessage-message" id="ordermessage-message"/>
 </div>
