@@ -20,7 +20,7 @@ class Virtua_GuestBook_IndexController extends Mage_Core_Controller_Front_Action
                     'name' => $params['name'],
                     'lastname' => $params['lastname'],
                     'email' => $params['email'],
-                    'ip_address' => '192.168.0.1'
+                    'ip_address' => Mage::helper('core/http')->getRemoteAddr(false)
                 ];
 
                 $model->setData($data)->save();
