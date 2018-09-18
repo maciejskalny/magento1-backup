@@ -2,36 +2,19 @@
 
 class Virtua_LatestOrders_Model_Observer extends Varien_Event_Observer
 {
-    public function addToTopmenu(Varien_Event_Observer $observer)
+    public function addToTopMenu(Varien_Event_Observer $observer)
     {
-        $menu = $observer->getMenu();
-        $tree = $menu->getTree();
+        if (Mage::getSingleton('customer/session')->isLoggedIn()) {
+            $menu = $observer->getMenu();
+            $tree = $menu->getTree();
 
-        $node = new Varien_Data_Tree_Node(array(
-            'name'   => 'Categories',
-            'id'     => 'categories',
-            'url'    => Mage::getUrl(), // point somewhere
-        ), 'id', $tree, $menu);
+            $node = new Varien_Data_Tree_Node([
+                'name' => 'Latest orders',
+                'id' => 'latestorders',
+                'url' => Mage::getBaseUrl() . '/latestorders',
+            ], 'id', $tree, $menu);
 
-        $menu->addChild($node);
-
-        // Children menu items
-        $collection = Mage::getResourceModel('catalog/category_collection')
-            ->setStore(Mage::app()->getStore())
-            ->addIsActiveFilter()
-            ->addNameToResult()
-            ->setPageSize(3);
-
-        foreach ($collection as $category) {
-            $tree = $node->getTree();
-            $data = array(
-                'name'   => $category->getName(),
-                'id'     => 'category-node-'.$category->getId(),
-                'url'    => $category->getUrl(),
-            );
-
-            $subNode = new Varien_Data_Tree_Node($data, 'id', $tree, $node);
-            $node->addChild($subNode);
+            $menu->addChild($node);
         }
     }
 }
