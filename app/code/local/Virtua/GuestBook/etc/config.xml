@@ -54,7 +54,7 @@
                 <resourceModel>guestbook_resource</resourceModel>
             </guestbook>
             <guestbook_resource>
-                <class>Virtua_GuesstBook_Model_Resource</class>
+                <class>Virtua_GuestBook_Model_Resource</class>
                 <entities>
                     <guestbook>
                         <table>guestbook</table>
