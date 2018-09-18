@@ -2,18 +2,38 @@
     <h2>Guest book</h2>
 </div>
 
-<form method="post" action="<?php echo Mage::getBaseUrl().'/guestbook/index/save' ?>">
-    <div class="form-group">
-        <label for="exampleInputEmail1">Name</label>
-        <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp" placeholder="Enter name" required>
-    </div>
-    <div class="form-group">
-        <label for="exampleInputEmail1">Lastname</label>
-        <input type="text" class="form-control" id="lastname" name="lastname" aria-describedby="emailHelp" placeholder="Enter lastname" required>
-    </div>
-    <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email" >
-    </div>
-    <button type="submit" class="btn btn-primary">Save</button>
-</form>
+<?php
+
+if (!Mage::getSingleton('customer/session')->isLoggedIn()) {
+
+    ?>
+    <form method="post" action="<?php echo Mage::getBaseUrl() . '/guestbook/index/save' ?>">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Name</label>
+            <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp"
+                   placeholder="Enter name" required>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Lastname</label>
+            <input type="text" class="form-control" id="lastname" name="lastname" aria-describedby="emailHelp"
+                   placeholder="Enter lastname" required>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
+                   placeholder="Enter email">
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+
+    <?php
+
+} else {
+
+    ?>
+
+    <p>Looks like you are not guest...</p>
+    <?php
+
+}
+    ?>
