@@ -5,7 +5,7 @@ class Virtua_LatestOrders_Block_LatestOrders extends Mage_Core_Block_Template
 
     public function prepareLatestClients()
     {
-        $limit = 2;
+        $limit = 10;
         $modelOrders = Mage::getModel('sales/order');
         $collectionOrders = $modelOrders->getCollection();
         $modelCustomers = Mage::getModel('customer/customer');
@@ -53,11 +53,14 @@ class Virtua_LatestOrders_Block_LatestOrders extends Mage_Core_Block_Template
 
             echo '<div class="card"><div class="card-header" id="heading'.$number.'"><h5 class="mb-0">
                   <button class="btn btn-link" data-toggle="collapse" data-target="#collapse'.$number.'" aria-expanded="true" aria-controls="collapse'.$number.'">'.
-                  $client.'</button></h5></div>
-                  <div id="collapse'.$number.'" class="collapse show" aria-labelledby="heading'.$number.'" data-parent="#accordion"><div class="card-body">';
+                  $client.' ('.count($this->prepareClientOrders($client)).')</button></h5></div>
+                  <div id="collapse'.$number.'" class="collapse" aria-labelledby="heading'.$number.'" data-parent="#accordion"><div class="card-body">';
 
             foreach ($this->prepareClientOrders($client) as $order) {
-                echo $order['entity_id'].' '.$order['weight'].'<br>';
+                echo '<div class="row"><div class="col"><span class="badge badge-dark">Order ID</span> '.$order['entity_id'].'</div>
+                      <div class="col"><span class="badge badge-light">Price</span> '.$order['base_grand_total'].'</div>
+                      <div class="col"><span class="badge badge-light">Shipping amount</span> '.$order['base_shipping_amount'].'</div>
+                      <div class="col"><span class="badge badge-secondary">Weight</span> '.$order['weight'].'</div></div><hr>';
             }
 
             echo '</div></div></div>';
