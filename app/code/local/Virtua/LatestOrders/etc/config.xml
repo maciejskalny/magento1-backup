@@ -38,6 +38,16 @@
         </layout>
     </frontend>
     <global>
+        <events>
+            <page_block_html_topmenu_gethtml_before>
+                <observers>
+                    <latestorders>
+                        <class>Virtua_LatestOrders_Model_Observer</class>
+                        <method>addToTopmenu</method>
+                    </latestorders>
+                </observers>
+            </page_block_html_topmenu_gethtml_before>
+        </events>
         <blocks>
             <latestorders>
                 <class>Virtua_LatestOrders_Block</class>
