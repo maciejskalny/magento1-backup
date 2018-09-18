@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<!--
+/*
+ * This file is a config of module which is responsible for guest book
+ *
+ * PHP version 7.1.21
+ *
+ * @category  Module config
+ * @package   Virtua_Internship
+ * @author    Maciej Skalny <contact@wearevirtua.com>
+ * @copyright 2018 Copyright (c) Virtua (http://wwww.wearevirtua.com)
+ * @license   GPL http://opensource.org/licenses/gpl-license.php
+ * @link      https://bitbucket.org/wearevirtua/magento1ms/
+ */
+-->
+<config>
+    <modules>
+        <Virtua_GuestBook>
+            <version>0.1.0</version>
+        </Virtua_GuestBook>
+    </modules>
+    <frontend>
+        <routers>
+            <guestbook>
+                <use>standard</use>
+                <args>
+                    <module>Virtua_GuestBook</module>
+                    <frontName>guestbook</frontName>
+                </args>
+            </guestbook>
+        </routers>
+        <layout>
+            <updates>
+                <guestbook module="Virtua_GuestBook">
+                    <file>guestbook.xml</file>
+                </guestbook>
+            </updates>
+        </layout>
+    </frontend>
+    <global>
+        <blocks>
+            <guestbook>
+                <class>Virtua_GuestBook_Block</class>
+            </guestbook>
+        </blocks>
+        <helpers>
+            <guestbook>
+                <class>Virtua_GuestBook_Helper</class>
+            </guestbook>
+        </helpers>
+        <models>
+            <guestbook>
+                <class>Virtua_GuestBook_Model</class>
+                <resourceModel>guestbook_resource</resourceModel>
+            </guestbook>
+            <guestbook_resource>
+                <class>Virtua_GuesstBook_Model_Resource</class>
+                <entities>
+                    <guestbook>
+                        <table>guestbook</table>
+                    </guestbook>
+                </entities>
+            </guestbook_resource>
+        </models>
+        <resources>
+            <guestbook_setup>
+                <setup>
+                    <module>Virtua_GuestBook</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </guestbook_setup>
+            <guestbook_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </guestbook_write>
+            <guestbook_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </guestbook_read>
+        </resources>
+    </global>
+</config>
