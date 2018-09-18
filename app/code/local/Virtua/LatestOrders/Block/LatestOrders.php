@@ -33,28 +33,34 @@ class Virtua_LatestOrders_Block_LatestOrders extends Mage_Core_Block_Template
             }
         }
 
-        $this->showLatestClients($latestClients);
+        return $latestClients;
     }
 
     public function prepareClientOrders($email)
     {
-        $collection = Mage::getModel('sales/order')->getCollection();
-        $client = $collection->addFieldToFilter('customer_email', $email)->getColumnValues('entity_id', 'base_grand_total', 'weight');
-        return $client;
+        $orders = Mage::getResourceModel('sales/order_collection')
+            ->addFieldToSelect('*')
+            ->addFieldToFilter('customer_email', $email);
+
+        return $orders;
     }
 
-    public function showLatestClients($latestClients)
+    public function showClientsOrders()
     {
-        foreach ($latestClients as $client) {
-            echo '<div class="dropdown"><button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'.
-                $client.'</button><div class="dropdown-menu">';
+        $number = 0;
+        foreach ($this->prepareLatestClients() as $client) {
+            $number++;
+
+            echo '<div class="card"><div class="card-header" id="heading'.$number.'"><h5 class="mb-0">
+                  <button class="btn btn-link" data-toggle="collapse" data-target="#collapse'.$number.'" aria-expanded="true" aria-controls="collapse'.$number.'">'.
+                  $client.'</button></h5></div>
+                  <div id="collapse'.$number.'" class="collapse show" aria-labelledby="heading'.$number.'" data-parent="#accordion"><div class="card-body">';
 
             foreach ($this->prepareClientOrders($client) as $order) {
-                echo '<button class="dropdown-item" type="button"> ID: '.$order['entity_id'].' Price: '.$order['base_grand_total'].' Weight: '.$order['weight'].'</button>';
+                echo $order['entity_id'].' '.$order['weight'].'<br>';
             }
 
-            echo '</div></div>';
+            echo '</div></div></div>';
         }
     }
-
 }
