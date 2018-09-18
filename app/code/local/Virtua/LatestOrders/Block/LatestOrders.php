@@ -33,23 +33,28 @@ class Virtua_LatestOrders_Block_LatestOrders extends Mage_Core_Block_Template
             }
         }
 
-        foreach ($latestClients as $client) {
-            echo '<a href="#">'.$client.'</a><br><br>';
-            $this->prepareClientOrders($client);
-            echo '<br><br>';
-        }
+        $this->showLatestClients($latestClients);
     }
 
     public function prepareClientOrders($email)
     {
         $collection = Mage::getModel('sales/order')->getCollection();
         $client = $collection->addFieldToFilter('customer_email', $email)->getColumnValues('entity_id', 'base_grand_total', 'weight');
+        return $client;
+    }
 
-        foreach($client as $row)
-        {
-            echo 'ID: '.$row['entity_id'].' Price: '.$row['base_grand_total'].' Weight: '.$row['weight'].'<br>';
+    public function showLatestClients($latestClients)
+    {
+        foreach ($latestClients as $client) {
+            echo '<div class="dropdown"><button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'.
+                $client.'</button><div class="dropdown-menu">';
+
+            foreach ($this->prepareClientOrders($client) as $order) {
+                echo '<button class="dropdown-item" type="button"> ID: '.$order['entity_id'].' Price: '.$order['base_grand_total'].' Weight: '.$order['weight'].'</button>';
+            }
+
+            echo '</div></div>';
         }
-
     }
 
 }
