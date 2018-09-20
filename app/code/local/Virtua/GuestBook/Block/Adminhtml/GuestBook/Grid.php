@@ -58,6 +58,11 @@ class Virtua_GuestBook_Block_Adminhtml_GuestBook_Grid extends Mage_Adminhtml_Blo
             'index'  => 'ip_address'
         ));
 
+        $this->addColumn('welcome_email', array(
+            'header' => Mage::helper('guestbook')->__('Is welcome email has been sent'),
+            'index'  => 'is_welcome_email_send'
+        ));
+
         return parent::_prepareColumns();
     }
 }

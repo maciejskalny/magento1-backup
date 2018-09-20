@@ -35,7 +35,10 @@ class Virtua_GuestBook_Model_Observer
                     ->setFromName('Magentoms')
                     ->setType('html');
                 $mail->send();
-                $guests->addFieldToFilter('guest_id', $guest['guest_id'])->getFirstItem()->setData('is_welcome_email_send', 'yes')->save();
+                $guests->addFieldToFilter('guest_id', $guest['guest_id'])
+                    ->getFirstItem()
+                    ->setData('is_welcome_email_send', 'yes')
+                    ->save();
             }
         }
     }
