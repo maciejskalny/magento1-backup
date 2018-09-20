@@ -25,7 +25,7 @@ class Virtua_GuestBook_Adminhtml_GuestBookController extends Mage_Adminhtml_Cont
         $this->loadLayout()
             ->_setActiveMenu('guestbook/items')
             ->_addBreadcrumb(Mage::helper('adminhtml')
-                ->__('Items Manager'), Mage::helper('adminhtml')->__('Item Manager'));
+                ->__('Guest Book'), Mage::helper('adminhtml')->__('Guest Book'));
 
         return $this;
     }
