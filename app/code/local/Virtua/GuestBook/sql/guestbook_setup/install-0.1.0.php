@@ -70,14 +70,14 @@ if (!$installer->tableExists('guestbook/guestbook')) {
             'IP address'
         )
         ->addColumn(
-            'welcoming_email_sended',
-            Varien_Db_Ddl_Table::TYPE_BOOLEAN,
+            'is_welcome_email_send',
+            Varien_Db_Ddl_Table::TYPE_VARCHAR,
             255,
             array(
                 'nullable' => false,
-                'default'  => 0,
+                'default'  => 'no',
             ),
-            'Welcoming email sended'
+            'Is welcome email send'
         )
     ;
 
