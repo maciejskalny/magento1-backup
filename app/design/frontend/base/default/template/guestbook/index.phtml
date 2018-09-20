@@ -1,11 +1,8 @@
 <div class="page-title">
     <h2>Guest book</h2>
 </div>
-
 <?php
-
 if (!Mage::getSingleton('customer/session')->isLoggedIn()) {
-
     ?>
     <form method="post" action="<?php echo Mage::getBaseUrl() . '/guestbook/index/save' ?>" onsubmit="return validateGuestBook()">
         <div class="form-group">
@@ -25,15 +22,10 @@ if (!Mage::getSingleton('customer/session')->isLoggedIn()) {
         </div>
         <button type="submit" class="btn btn-primary">Save</button>
     </form>
-
     <?php
-
 } else {
-
     ?>
-
     <p>Looks like you are not guest...</p>
     <?php
-
 }
     ?>
