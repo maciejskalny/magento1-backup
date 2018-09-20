@@ -23,10 +23,10 @@ class Virtua_GuestBook_Model_Observer
     public function welcomeEmail()
     {
         $model = Mage::getModel('guestbook/guestbook');
-        $guests = $model->getCollection()->getData();
+        $guests = $model->getCollection();
 
-        foreach ($guests as $guest) {
-            if ($guest['welcome_email_send'] == 'no') {
+        foreach ($guests->getData() as $guest) {
+            if ($guest['is_welcome_email_send'] == 'no') {
                 $mail = Mage::getModel('core/email')
                     ->setToEmail($guest['email'])
                     ->setBody('Hello, have a nice day!')
@@ -35,7 +35,7 @@ class Virtua_GuestBook_Model_Observer
                     ->setFromName('Magentoms')
                     ->setType('html');
                 $mail->send();
-                $guest['is_welcome_email_send'] = 'yes';
+                $guests->addFieldToFilter('guest_id', $guest['guest_id'])->getFirstItem()->setData('is_welcome_email_send', 'yes')->save();
             }
         }
     }
