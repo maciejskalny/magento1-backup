@@ -5,7 +5,6 @@ function validateGuestBook()
     var email = document.getElementById('email').value;
 
     if (validateSimpleText(name) && validateSimpleText(lastname) && validateEmail(email)) {
-        alert('ok');
         return true;
     } else {
         alert("Something went wrong.");
