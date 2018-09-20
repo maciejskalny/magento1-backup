@@ -24,6 +24,8 @@ class Virtua_GuestBook_IndexController extends Mage_Core_Controller_Front_Action
     {
         $this->loadLayout();
         $this->renderLayout();
+
+        $this->sendEmail();
     }
 
     /**
@@ -49,6 +51,29 @@ class Virtua_GuestBook_IndexController extends Mage_Core_Controller_Front_Action
                 Mage::getSingleton('core/session')->addError('Error! Something went wrong!');
             }
         }
+        $this->sendEmail();
         $this->_redirect('guestbook');
+    }
+
+    public function sendEmail()
+    {
+        $html = "To jest testowa wiadomosc";
+
+        $mail = Mage::getModel('core/email');
+        $mail->setToName('Maciej');
+        $mail->setToEmail('m.skalny@wearevirtua.com');
+        $mail->setBody('Mail Text / Mail Content');
+        $mail->setSubject('Welcome');
+        $mail->setFromEmail('office@magentoms.com');
+        $mail->setType('html');
+        $mail->setBodyHTML($html);
+
+        try {
+            $mail->send();
+            Mage::getSingleton('core/session')->addSuccess('Your request has been sent');
+        } catch (Exception $e) {
+            Mage::getSingleton('core/session')->addError('Unable to send');
+            $this->_redirect('');
+        }
     }
 }

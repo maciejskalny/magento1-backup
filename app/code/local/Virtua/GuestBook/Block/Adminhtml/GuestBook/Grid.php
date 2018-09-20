@@ -53,7 +53,7 @@ class Virtua_GuestBook_Block_Adminhtml_GuestBook_Grid extends Mage_Adminhtml_Blo
             'index'  => 'email'
         ));
 
-        $this->addColumn('name', array(
+        $this->addColumn('ip_address', array(
             'header' => Mage::helper('guestbook')->__('IP Address'),
             'index'  => 'ip_address'
         ));
