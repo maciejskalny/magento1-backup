@@ -69,6 +69,16 @@ if (!$installer->tableExists('guestbook/guestbook')) {
             ),
             'IP address'
         )
+        ->addColumn(
+            'welcoming_email_sended',
+            Varien_Db_Ddl_Table::TYPE_BOOLEAN,
+            255,
+            array(
+                'nullable' => false,
+                'default'  => 0,
+            ),
+            'Welcoming email sended'
+        )
     ;
 
     $installer->getConnection()->createTable($table);
