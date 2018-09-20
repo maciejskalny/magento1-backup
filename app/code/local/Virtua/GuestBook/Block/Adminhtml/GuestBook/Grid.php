@@ -1,6 +1,6 @@
 <?php
 /**
- * This file is preparing columns for orders grid.
+ * This file is preparing columns for guest book grid.
  *
  * PHP version 7.1.21
  *

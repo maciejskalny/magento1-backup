@@ -39,15 +39,4 @@ class Virtua_GuestBook_Adminhtml_GuestBookController extends Mage_Adminhtml_Cont
         $this->_addContent($this->getLayout()->createBlock('guestbook/adminhtml_guestbook'));
         $this->renderLayout();
     }
-
-    /**
-     * Creates grid.
-     */
-    public function gridAction()
-    {
-        $this->loadLayout();
-        $this->getResponse()->setBody(
-            $this->getLayout()->createBlock('importedit/adminhtml_ordermessage_grid')->toHtml()
-        );
-    }
 }
