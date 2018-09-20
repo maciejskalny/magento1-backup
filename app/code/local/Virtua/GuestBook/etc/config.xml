@@ -78,6 +78,18 @@
             </resources>
         </acl>
     </adminhtml>
+    <crontab>
+        <jobs>
+            <guestbook_cron_task>
+                <schedule>
+                    <cron_expr>* * * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>guestbook/observer::crontask</model>
+                </run>
+            </guestbook_cron_task>
+        </jobs>
+    </crontab>
     <global>
         <blocks>
             <guestbook>
