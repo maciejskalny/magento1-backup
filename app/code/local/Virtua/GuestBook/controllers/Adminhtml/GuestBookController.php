@@ -39,4 +39,32 @@ class Virtua_GuestBook_Adminhtml_GuestBookController extends Mage_Adminhtml_Cont
         $this->_addContent($this->getLayout()->createBlock('guestbook/adminhtml_guestbook'));
         $this->renderLayout();
     }
+
+    public function sendWelcomeEmailAction()
+    {
+        $guests = $this->getRequest()->getParam('guests');
+
+
+            $model = Mage::getModel('guestbook/guestbook');
+            $collection = $model->getCollection();
+
+            foreach ($guests as $guest)
+            {
+                $entity = $collection->addFieldToFilter('guest_id', $guest)->getFirstItem();
+
+                if ($entity['is_welcome_email_send'] == 'no') {
+                    $mail = Mage::getModel('core/email')
+                        ->setToEmail($entity['email'])
+                        ->setBody('Hello, have a nice day!')
+                        ->setSubject('Magento1ms guest book')
+                        ->setFromEmail('office@magentoms.com')
+                        ->setFromName('Magentoms')
+                        ->setType('html');
+                    $mail->send();
+                    $entity->setData('is_welcome_email_send', 'yes')->save();
+                }
+            }
+
+        $this->_redirect('*/*/index');
+    }
 }
