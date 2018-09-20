@@ -37,6 +37,47 @@
             </updates>
         </layout>
     </frontend>
+    <admin>
+        <routers>
+            <guestbook>
+                <use>admin</use>
+                <args>
+                    <module>Virtua_GuestBook</module>
+                    <frontName>guestbook</frontName>
+                </args>
+            </guestbook>
+        </routers>
+    </admin>
+    <adminhtml>
+        <menu>
+            <guestbookmenu module="guestbook">
+                <title>Virtua</title>
+                <sort_order>999</sort_order>
+                <children>
+                    <items module="guestbook">
+                        <title>Guest Book</title>
+                        <sort_order>0</sort_order>
+                        <action>guestbook/adminhtml_guestbook</action>
+                    </items>
+                </children>
+            </guestbookmenu>
+        </menu>
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <guestbook>
+                            <title>GuestBook Module</title>
+                            <sort_order>200</sort_order>
+                        </guestbook>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
     <global>
         <blocks>
             <guestbook>
