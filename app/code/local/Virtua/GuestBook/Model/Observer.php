@@ -4,18 +4,18 @@ class Virtua_GuestBook_Model_Observer
 {
     public function crontask()
     {
-        //foreach dla wszystkich maili pobranych z bazy
+        $model = Mage::getModel('guestbook/guestbook');
+        $emails = $model->getCollection()->getColumnValues('email');
 
-        $test = 'Cos dziadlsadpmasokdpasmdopamsiodpmasimdmasiod';
-        Mage::log($test, null, 'crontest.log', true);
-        $mail = Mage::getModel('core/email')
-            ->setToEmail('m.skalny@wearevirtua.com')
-            ->setBody('Testowa wiadomosc')
-            ->setSubject('Jakis temat')
-            ->setFromEmail('office@magentoms.com')
-            ->setFromName('Magentoms')
-            ->setType('html');
-
-        $mail->send();
+        foreach ($emails as $email) {
+            $mail = Mage::getModel('core/email')
+                ->setToEmail('m.skalny@wearevirtua.com')
+                ->setBody('Hello, have a nice day!')
+                ->setSubject('Magento1ms guest book')
+                ->setFromEmail('office@magentoms.com')
+                ->setFromName('Magentoms')
+                ->setType('html');
+            $mail->send();
+        }
     }
 }
