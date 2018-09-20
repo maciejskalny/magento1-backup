@@ -7,7 +7,7 @@
 if (!Mage::getSingleton('customer/session')->isLoggedIn()) {
 
     ?>
-    <form method="post" action="<?php echo Mage::getBaseUrl() . '/guestbook/index/save' ?>">
+    <form method="post" action="<?php echo Mage::getBaseUrl() . '/guestbook/index/save' ?>" onsubmit="return validateGuestBook()">
         <div class="form-group">
             <label for="exampleInputEmail1">Name</label>
             <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp"
