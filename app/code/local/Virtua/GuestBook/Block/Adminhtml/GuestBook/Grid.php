@@ -65,4 +65,16 @@ class Virtua_GuestBook_Block_Adminhtml_GuestBook_Grid extends Mage_Adminhtml_Blo
 
         return parent::_prepareColumns();
     }
+
+    protected function _prepareMassaction()
+    {
+        $this->setMassactionIdField('guest_id');
+        $this->getMassactionBlock()->addItem('welcomeemail', [
+           'label' => Mage::helper('guestbook')->__('Send welcome email'),
+           'url' => $this->getUrl('*/*/send-welcome-email', [''=>'']),
+           'confirm' => Mage::helper('guestbook')->__('Are you sure?')
+        ]);
+
+        return $this;
+    }
 }
