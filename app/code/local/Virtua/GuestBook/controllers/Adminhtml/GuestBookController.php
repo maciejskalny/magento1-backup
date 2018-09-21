@@ -47,15 +47,12 @@ class Virtua_GuestBook_Adminhtml_GuestBookController extends Mage_Adminhtml_Cont
     {
         try {
             $guests = $this->getRequest()->getParam('massaction');
-
             $model = Mage::getModel('guestbook/guestbook');
             $collection = $model->getCollection();
-            $count = 0;
             $fail = 0;
 
             foreach ($guests as $guest) {
                 $entity = $model->load($guest);
-                $count++;
 
                 if ($entity['is_welcome_email_send'] == 'no') {
                     $mail = Mage::getModel('core/email')
@@ -74,7 +71,7 @@ class Virtua_GuestBook_Adminhtml_GuestBookController extends Mage_Adminhtml_Cont
 
             if ($fail == 0) {
                 Mage::getSingleton('adminhtml/session')->addSuccess('Success!');
-            } elseif ($fail == $count) {
+            } elseif ($fail == sizeof($guests)) {
                 Mage::getSingleton('adminhtml/session')
                     ->addError('Something goes wrong. All emails were to customers that received emails before.');
             } else {
