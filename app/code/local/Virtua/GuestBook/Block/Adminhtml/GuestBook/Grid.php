@@ -33,35 +33,35 @@ class Virtua_GuestBook_Block_Adminhtml_GuestBook_Grid extends Mage_Adminhtml_Blo
      */
     protected function _prepareColumns()
     {
-        $this->addColumn('guest_id', array(
+        $this->addColumn('guest_id', [
             'header' => Mage::helper('guestbook')->__('ID'),
             'index'  => 'guest_id'
-        ));
+        ]);
 
-        $this->addColumn('name', array(
+        $this->addColumn('name', [
             'header' => Mage::helper('guestbook')->__('Name'),
             'index'  => 'name'
-        ));
+        ]);
 
-        $this->addColumn('lastname', array(
+        $this->addColumn('lastname', [
             'header' => Mage::helper('guestbook')->__('Lastname'),
             'index'  => 'lastname'
-        ));
+        ]);
 
-        $this->addColumn('email', array(
+        $this->addColumn('email', [
             'header' => Mage::helper('guestbook')->__('Email'),
             'index'  => 'email'
-        ));
+        ]);
 
-        $this->addColumn('ip_address', array(
+        $this->addColumn('ip_address', [
             'header' => Mage::helper('guestbook')->__('IP Address'),
             'index'  => 'ip_address'
-        ));
+        ]);
 
-        $this->addColumn('welcome_email', array(
+        $this->addColumn('welcome_email', [
             'header' => Mage::helper('guestbook')->__('Is welcome email has been sent'),
             'index'  => 'is_welcome_email_send'
-        ));
+        ]);
 
         return parent::_prepareColumns();
     }
