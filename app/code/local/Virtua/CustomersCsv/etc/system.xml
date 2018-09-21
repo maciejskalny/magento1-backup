@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <myconf translate="label">
+            <label>VIRTUA</label>
+            <sort_order>150</sort_order>
+        </myconf>
+    </tabs>
+    <sections>
+        <customerscsv_config translate="label" module="adminhtml">
+            <label>Customers CSV Module</label>
+            <tab>myconf</tab>
+            <sort_order>10</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <customerscsv_group translate="label comment">
+                    <label>VIRTUA - Customers CSV Module config</label>
+                    <sort_order>50</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <customerscsv_select translate="label comment">
+                            <label>Customers CSV Module</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </customerscsv_select>
+                    </fields>
+                </customerscsv_group>
+            </groups>
+        </customerscsv_config>
+    </sections>
+</config>
