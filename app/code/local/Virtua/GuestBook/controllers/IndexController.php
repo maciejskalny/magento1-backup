@@ -24,12 +24,6 @@ class Virtua_GuestBook_IndexController extends Mage_Core_Controller_Front_Action
     {
         $this->loadLayout();
         $this->renderLayout();
-
-//        $model = Mage::getModel('guestbook/guestbook');
-//        $collection = $model->getCollection();
-//        $entity = $collection->addFieldToFilter('guest_id', 1)->getFirstItem();
-//
-//        Zend_Debug::dump($entity['email']);
     }
 
     /**

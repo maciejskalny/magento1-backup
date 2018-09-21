@@ -1,6 +1,6 @@
 <?php
 /**
- * This file is preparing columns for guest book grid.
+ * This file is preparing guest book grid in backend.
  *
  * PHP version 7.1.21
  *
@@ -66,6 +66,9 @@ class Virtua_GuestBook_Block_Adminhtml_GuestBook_Grid extends Mage_Adminhtml_Blo
         return parent::_prepareColumns();
     }
 
+    /**
+     * @return $this|Mage_Adminhtml_Block_Widget_Grid
+     */
     protected function _prepareMassaction()
     {
         $this->setMassactionIdField('guest_id');
