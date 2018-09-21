@@ -39,12 +39,12 @@ class Virtua_OrderMessage_Model_Observer extends Varien_Event_Observer
         }
 
         if ($validation) {
-            $data = array(
+            $data = [
                 'order_id'    => $orderId,
                 'customer_id' => $customerId,
                 'topic_id'    => $topicId,
                 'message'     => $message
-            );
+            ];
 
             $modelMessage = Mage::getModel('ordermessage/ordermessage');
             $modelMessage->setData($data)->save();

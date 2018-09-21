@@ -31,18 +31,14 @@ class Virtua_OrderMessage_Test_Block_Adminhtml_Order_Grid extends Mage_Adminhtml
         $collection
             ->getSelect()
             ->joinLeft(
-                array('ordermessage' => $ordermessage),
+                ['ordermessage'   => $ordermessage],
                 'main_table.entity_id = ordermessage.order_id',
-                array(
-                    'order_message'  => 'message',
-                )
+                ['order_message'  => 'message']
             )
             ->joinLeft(
-                array('ordermessagetopic' => $ordermessagetopic),
+                ['ordermessagetopic' => $ordermessagetopic],
                 'ordermessage.topic_id = ordermessagetopic.topic_id',
-                array(
-                    'topic'         => 'topic'
-                )
+                ['topic'          => 'topic']
             );
 
         $this->setCollection($collection);
@@ -55,21 +51,21 @@ class Virtua_OrderMessage_Test_Block_Adminhtml_Order_Grid extends Mage_Adminhtml
      */
     protected function _prepareColumns()
     {
-        $this->addColumnAfter('topic', array(
+        $this->addColumnAfter('topic', [
             'header' => Mage::helper('Sales')->__('Topic'),
             'width'  => '100px',
             'index'  => 'topic',
             'type'   => 'text',
             'filter_index' => 'ordermessagetopic.topic',
-        ), 'shipping_name');
+        ], 'shipping_name');
 
-        $this->addColumnAfter('message', array(
+        $this->addColumnAfter('message', [
             'header' => Mage::helper('Sales')->__('Message'),
             'width'  => '100px',
             'index'  => 'order_message',
             'type'   => 'text',
             'filter_index' => 'ordermessage.message',
-        ), 'topic');
+        ], 'topic');
 
         return parent::_prepareColumns();
     }

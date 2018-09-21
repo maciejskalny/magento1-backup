@@ -93,7 +93,7 @@ class Virtua_OrderMessage_Adminhtml_OrderMessageController extends Mage_Adminhtm
             } catch (Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
                 Mage::getSingleton('adminhtml/session')->setOrderMessageData($this->getRequest()->getPost());
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             }
         }
@@ -116,7 +116,7 @@ class Virtua_OrderMessage_Adminhtml_OrderMessageController extends Mage_Adminhtm
                 $this->_redirect('*/*/');
             } catch (Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
             }
         }
 

@@ -33,7 +33,7 @@ class Virtua_OrderMessage_Block_Adminhtml_OrderMessage_Grid extends Mage_Adminht
      */
     public function getRowUrl($row)
     {
-        return $this->getUrl('virtua_ordermessage_admin/ordermessage/edit', array('id' => $row->getId()));
+        return $this->getUrl('virtua_ordermessage_admin/ordermessage/edit', ['id' => $row->getId()]);
     }
 
     /**
@@ -42,15 +42,15 @@ class Virtua_OrderMessage_Block_Adminhtml_OrderMessage_Grid extends Mage_Adminht
      */
     protected function _prepareColumns()
     {
-        $this->addColumn('topic_id', array(
+        $this->addColumn('topic_id', [
             'header' => Mage::helper('ordermessage')->__('ID'),
             'index'  => 'topic_id'
-        ));
+        ]);
 
-        $this->addColumn('topic', array(
+        $this->addColumn('topic', [
             'header' => Mage::helper('ordermessage')->__('Topic'),
             'index'  => 'topic'
-        ));
+        ]);
 
         return parent::_prepareColumns();
     }
