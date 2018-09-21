@@ -27,13 +27,13 @@ class Virtua_CustomerPoll_Block_CustomerPoll extends Mage_Core_Block_Template
         $collectionAnswers = Mage::getModel('customerpoll/customerpoll')->getCollection();
         $count = $collectionAnswers
             ->addFieldToFilter('customerpoll_id', $question)
-            ->addFieldToFilter('option', array('in' => array('yes','no')))
+            ->addFieldToFilter('option', ['in' => ['yes','no']])
             ->getColumnValues('count');
 
-        $answers = array(
+        $answers = [
             'yes' => $count[0],
             'no' => $count[1]
-        );
+        ];
 
         return $answers;
     }

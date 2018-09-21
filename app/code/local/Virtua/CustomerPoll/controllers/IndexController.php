@@ -46,11 +46,11 @@ class Virtua_CustomerPoll_IndexController extends Mage_Core_Controller_Front_Act
                     ->getFirstItem();
 
                 if ($entity['option'] == null) {
-                    $data = array(
+                    $data = [
                         'customerpoll_id' => $pollNumber,
                         'option' => $vote,
                         'count' => 1
-                    );
+                    ];
                     $model->setData($data)->save();
                 } else {
                     $count = (int)$entity['count'];
