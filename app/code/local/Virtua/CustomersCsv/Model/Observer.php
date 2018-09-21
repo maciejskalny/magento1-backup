@@ -1,7 +1,25 @@
 <?php
+/**
+ * This file is an event observer.
+ *
+ * PHP version 7.1.21
+ *
+ * @category  Module
+ * @package   Virtua_Internship
+ * @author    Maciej Skalny <contact@wearevirtua.com>
+ * @copyright 2018 Copyright (c) Virtua (http://wwww.wearevirtua.com)
+ * @license   GPL http://opensource.org/licenses/gpl-license.php
+ * @link      https://bitbucket.org/wearevirtua/magento1ms/
+ */
 
+/**
+ * Class Virtua_CustomersCsv_Model_Observer
+ */
 class Virtua_CustomersCsv_Model_Observer
 {
+    /**
+     * Exports customers to csv file.
+     */
     public function export()
     {
         $customers = Mage::getModel('customer/customer')->getCollection()
@@ -16,14 +34,6 @@ class Virtua_CustomersCsv_Model_Observer
             $row = $customer['firstname'].' '.$customer['lastname'].' '.$customer['email'];
             fwrite($fh, $row."\n");
         }
-
         fclose($fh);
     }
-
-
 }
-
-//$filename = Mage::getBaseDir('var') . DS . 'log' . DS . 'customers.csv';
-//$fh = fopen($filename, "a+");
-//fwrite($filename, 'dasdasdasdsad');
-//fclose($fh);
