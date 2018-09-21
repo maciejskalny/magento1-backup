@@ -23,7 +23,7 @@
         <jobs>
             <customerscsv_cron_task>
                 <schedule>
-                    <cron_expr>* * * * *</cron_expr>
+                    <cron_expr>0 14 * * *</cron_expr>
                 </schedule>
                 <run>
                     <model>customerscsv/observer::export</model>
@@ -33,10 +33,9 @@
     </crontab>
     <global>
         <models>
-            <guestbook>
-                <class>Virtua_GuestBook_Model</class>
-                <resourceModel>guestbook_resource</resourceModel>
-            </guestbook>
+            <customerscsv>
+                <class>Virtua_CustomersCsv_Model</class>
+            </customerscsv>
         </models>
     </global>
 </config>
