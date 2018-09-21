@@ -17,45 +17,75 @@ $installer->startSetup();
 
 if (!$installer->tableExists('customerpoll/customerpoll')) {
     $table = $installer->getConnection()->newTable($installer->getTable('customerpoll'))
-        ->addColumn('option_id', Varien_Db_Ddl_Table::TYPE_INTEGER, 11,
+        ->addColumn(
+            'option_id',
+            Varien_Db_Ddl_Table::TYPE_INTEGER,
+            11,
             array(
                 'unsigned' => true,
                 'nullable' => false,
                 'primary' => true,
                 'identity' => true,
-            ), 'Option ID')
-        ->addColumn('customerpoll_id', Varien_Db_Ddl_Table::TYPE_INTEGER, 11,
+            ),
+            'Option ID'
+        )
+        ->addColumn(
+            'customerpoll_id',
+            Varien_Db_Ddl_Table::TYPE_INTEGER,
+            11,
             array(
                 'nullable' => false,
-            ), 'Poll ID')
-        ->addColumn('option', Varien_Db_Ddl_Table::TYPE_VARCHAR, 255,
+            ),
+            'Poll ID'
+        )
+        ->addColumn(
+            'option',
+            Varien_Db_Ddl_Table::TYPE_VARCHAR,
+            255,
             array(
                 'nullable' => false,
                 'default' => '',
-            ), 'Option')
-        ->addColumn('count', Varien_Db_Ddl_Table::TYPE_INTEGER, 11,
+            ),
+            'Option'
+        )
+        ->addColumn(
+            'count',
+            Varien_Db_Ddl_Table::TYPE_INTEGER,
+            11,
             array(
                 'nullable' => false,
                 'default' => '0',
-            ), 'Count');
+            ),
+            'Count'
+        );
 
     $installer->getConnection()->createTable($table);
 }
 
 if (!$installer->tableExists('customerpoll/customerpollquestions')) {
     $table = $installer->getConnection()->newTable($installer->getTable('customerpollquestions'))
-        ->addColumn('customerpoll_id', Varien_Db_Ddl_Table::TYPE_INTEGER, 11,
+        ->addColumn(
+            'customerpoll_id',
+            Varien_Db_Ddl_Table::TYPE_INTEGER,
+            11,
             array(
                 'unsigned' => true,
                 'nullable' => false,
                 'primary' => true,
                 'identity' => true,
-            ), 'Poll ID')
-        ->addColumn('question', Varien_Db_Ddl_Table::TYPE_VARCHAR, 255,
+            ),
+            'Poll ID'
+        )
+        ->addColumn(
+            'question',
+            Varien_Db_Ddl_Table::TYPE_VARCHAR,
+            255,
             array(
                 'nullable' => false,
                 'default' => '',
-            ), 'Question');
+            ),
+            'Question'
+        );
 
     $installer->getConnection()->createTable($table);
 }

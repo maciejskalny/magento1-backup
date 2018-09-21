@@ -1,6 +1,6 @@
 <?php
 /**
- * Customer Poll Questions model
+ * Customer Poll Questions resource
  *
  * PHP version 7.1.21
  *
