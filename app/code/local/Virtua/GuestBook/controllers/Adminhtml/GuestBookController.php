@@ -75,9 +75,14 @@ class Virtua_GuestBook_Adminhtml_GuestBookController extends Mage_Adminhtml_Cont
             if ($fail == 0) {
                 Mage::getSingleton('adminhtml/session')->addSuccess('Success!');
             } elseif ($fail == $count) {
-                Mage::getSingleton('adminhtml/session')->addError('Something goes wrong. All emails were to customers that received emails before.');
+                Mage::getSingleton('adminhtml/session')
+                    ->addError('Something goes wrong. All emails were to customers that received emails before.');
             } else {
-                Mage::getSingleton('adminhtml/session')->addWarning('Something goes wrong. There were '.$fail.' emails to customers that received emails before. Messages to others have been sent.');
+                Mage::getSingleton('adminhtml/session')
+                    ->addWarning(
+                        'Something goes wrong. There were '. $fail.
+                        ' emails to customers that received emails before. Messages to others have been sent.'
+                    );
             }
         } catch (Exception $e) {
             Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
