@@ -18,7 +18,7 @@
 class Virtua_CustomerPoll_IndexController extends Mage_Core_Controller_Front_Action
 {
     /**
-     * Rendering layout and supports poll actions on database
+     * Rendering layout
      */
     public function indexAction()
     {
