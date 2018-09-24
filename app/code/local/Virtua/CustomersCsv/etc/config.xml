@@ -23,7 +23,7 @@
         <jobs>
             <customerscsv_cron_task>
                 <schedule>
-                    <cron_expr>0 14 * * *</cron_expr>
+                    <cron_expr>35 9 * * *</cron_expr>
                 </schedule>
                 <run>
                     <model>customerscsv/observer::export</model>

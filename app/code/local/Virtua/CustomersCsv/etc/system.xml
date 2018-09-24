@@ -34,7 +34,7 @@
                             <label>Frequency</label>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_cron_frequency</source_model>
-                            <backend_model>virtua_customerscsv_adminhtml_system_config_backend_model_cron</backend_model>
+                            <backend_model>virtua_customerscsv_model_adminhtml_system_config_backend_model_cron</backend_model>
                             <sort_order>20</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>0</show_in_website>

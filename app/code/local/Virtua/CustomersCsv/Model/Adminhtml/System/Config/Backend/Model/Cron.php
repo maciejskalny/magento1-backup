@@ -1,6 +1,6 @@
 <?php
 
-class Virtua_CustomersCsv_Adminhtml_System_Config_Backend_Model_Cron extends Mage_Core_Model_Config_Data
+class Virtua_CustomersCsv_Model_Adminhtml_System_Config_Backend_Model_Cron extends Mage_Core_Model_Config_Data
 {
     const CRON_STRING_PATH = 'crontab/jobs/customerscsv_cron_task/schedule/cron_expr';
 
@@ -27,8 +27,10 @@ class Virtua_CustomersCsv_Adminhtml_System_Config_Backend_Model_Cron extends Mag
                 ->setValue($cronExprString)
                 ->setPath(self::CRON_STRING_PATH)
                 ->save();
-        } catch (Exception $e) {
+        }
+        catch (Exception $e) {
             throw new Exception(Mage::helper('cron')->__('Unable to save the cron expression.'));
+
         }
     }
 }
