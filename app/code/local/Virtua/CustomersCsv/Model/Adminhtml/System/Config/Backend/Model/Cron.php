@@ -35,11 +35,11 @@ class Virtua_CustomersCsv_Model_Adminhtml_System_Config_Backend_Model_Cron exten
         $frequencyMonthly = Mage_Adminhtml_Model_System_Config_Source_Cron_Frequency::CRON_MONTHLY;
 
         $cronExprArray = [
-            intval($time[1]),                                   # Minute
-            intval($time[0]),                                   # Hour
-            ($frequency == $frequencyMonthly) ? '1' : '*',      # Day of the Month
-            '*',                                                # Month of the Year
-            ($frequency == $frequencyWeekly) ? '1' : '*',       # Day of the Week
+            intval($time[1]),
+            intval($time[0]),
+            ($frequency == $frequencyMonthly) ? '1' : '*',
+            '*',
+            ($frequency == $frequencyWeekly) ? '1' : '*',
         ];
         $cronExprString = join(' ', $cronExprArray);
 
