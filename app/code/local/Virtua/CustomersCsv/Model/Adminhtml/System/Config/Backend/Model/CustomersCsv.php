@@ -63,7 +63,16 @@ class Virtua_CustomersCsv_Model_Adminhtml_System_Config_Backend_Model_Cron exten
 
     public function importCustomers()
     {
-        Mage::log('IMPORT DZIALA', null, 'system.log', true);
+        $file =  $this->getData('groups/customerscsv_import/fields/file/value');
+        $fileExtension = strrchr($file, '.');
+
+        if ($fileExtension == '.csv') {
+
+        } else {
+            Mage::getSingleton('core/session')->addError('Error! Wrong file extension!');
+        }
+
+        Mage::log($file, null, 'system.log', true);
     }
 
 }
