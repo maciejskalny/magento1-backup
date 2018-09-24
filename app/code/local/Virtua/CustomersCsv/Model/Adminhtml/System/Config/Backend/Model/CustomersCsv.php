@@ -29,7 +29,6 @@ class Virtua_CustomersCsv_Model_Adminhtml_System_Config_Backend_Model_CustomersC
     protected function _afterSave()
     {
         $this->setCron();
-
         $this->importCustomers();
     }
 
@@ -67,7 +66,8 @@ class Virtua_CustomersCsv_Model_Adminhtml_System_Config_Backend_Model_CustomersC
         $importFileExtension = strrchr($importFile, '.');
 
         if ($importFileExtension == '.csv') {
-            $fileName = Mage::getBaseDir('var') . DS . 'import' . DS . 'customers.csv';
+            $fileName = Mage::getBaseDir('var') . DS . 'import' . DS . $importFile;
+            Mage::log($fileName, null, 'system.log', true);
             $fileContent = file_get_contents($fileName);
 
             foreach (file($fileName) as $line) {
@@ -77,8 +77,6 @@ class Virtua_CustomersCsv_Model_Adminhtml_System_Config_Backend_Model_CustomersC
         } else {
             Mage::getSingleton('core/session')->addError('Error! Wrong file extension!');
         }
-
-        Mage::log($importFileExtension, null, 'system.log', true);
     }
 
     public function saveCustomer($customer)
