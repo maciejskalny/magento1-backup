@@ -34,7 +34,7 @@
                             <label>Frequency</label>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_cron_frequency</source_model>
-                            <backend_model>virtua_customerscsv_model_adminhtml_system_config_backend_model_cron</backend_model>
+                            <backend_model>virtua_customerscsv_model_adminhtml_system_config_backend_model_customerscsv</backend_model>
                             <sort_order>20</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>0</show_in_website>
@@ -59,7 +59,7 @@
                     <fields>
                         <file translate="label comment">
                             <label>File</label>
-                            <comment><![CDATA[File saved in <strong><span style="color: red;">var/uploads</span></strong> folder.]]></comment>
+                            <comment><![CDATA[File with <strong><span style="color: red;">.csv</span></strong> extension.]]></comment>
                             <frontend_type>file</frontend_type>
                             <backend_model>adminhtml/system_config_backend_file</backend_model>
                             <upload_dir>var/import</upload_dir>

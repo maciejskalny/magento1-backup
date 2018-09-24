@@ -1,6 +1,6 @@
 <?php
 /**
- * This file supports cron configuration in admin panel.
+ * This file supports Customers Csv configuration in admin panel.
  *
  * PHP version 7.1.21
  *
@@ -13,9 +13,9 @@
  */
 
 /**
- * Class Virtua_CustomersCsv_Model_Adminhtml_System_Config_Backend_Model_Cron
+ * Class Virtua_CustomersCsv_Model_Adminhtml_System_Config_Backend_Model_CustomersCsv
  */
-class Virtua_CustomersCsv_Model_Adminhtml_System_Config_Backend_Model_Cron extends Mage_Core_Model_Config_Data
+class Virtua_CustomersCsv_Model_Adminhtml_System_Config_Backend_Model_CustomersCsv extends Mage_Core_Model_Config_Data
 {
     /**
      * Constance which holds path to CustomersCsv crontab job.
@@ -63,16 +63,41 @@ class Virtua_CustomersCsv_Model_Adminhtml_System_Config_Backend_Model_Cron exten
 
     public function importCustomers()
     {
-        $file =  $this->getData('groups/customerscsv_import/fields/file/value');
-        $fileExtension = strrchr($file, '.');
+        $importFile =  $this->getData('groups/customerscsv_import/fields/file/value');
+        $importFileExtension = strrchr($importFile, '.');
 
-        if ($fileExtension == '.csv') {
+        if ($importFileExtension == '.csv') {
+            $fileName = Mage::getBaseDir('var') . DS . 'import' . DS . 'customers.csv';
+            $fileContent = file_get_contents($fileName);
 
+            foreach (file($fileName) as $line) {
+                $array = explode(',', $line);
+                $this->saveCustomer($array);
+            }
         } else {
             Mage::getSingleton('core/session')->addError('Error! Wrong file extension!');
         }
 
-        Mage::log($file, null, 'system.log', true);
+        Mage::log($importFileExtension, null, 'system.log', true);
     }
 
+    public function saveCustomer($customer)
+    {
+        $model = Mage::getModel('customer/customer');
+        $websiteId = Mage::app()->getWebsite()->getId();
+        $store = Mage::app()->getStore();
+
+        $model
+            ->setWebsiteId($websiteId)
+            ->setStore($store)
+            ->setFirstname($customer[0])
+            ->setLastname($customer[1])
+            ->setEmail($customer[2])
+            ->setPassword($customer[3]);
+        try {
+            $model->save();
+        } catch (Exception $e) {
+            Mage::log($e->getMessage(), null, 'system.log', true);
+        }
+    }
 }
