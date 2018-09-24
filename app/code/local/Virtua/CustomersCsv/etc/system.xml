@@ -50,6 +50,26 @@
                         </enabling>
                     </fields>
                 </customerscsv_group>
+                <customerscsv_import>
+                    <label>VIRTUA - Customers CSV import</label>
+                    <sort_order>60</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <file translate="label comment">
+                            <label>File</label>
+                            <comment><![CDATA[File saved in <strong><span style="color: red;">var/uploads</span></strong> folder.]]></comment>
+                            <frontend_type>file</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_file</backend_model>
+                            <upload_dir>var/import</upload_dir>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </file>
+                    </fields>
+                </customerscsv_import>
             </groups>
         </customerscsv_config>
     </sections>

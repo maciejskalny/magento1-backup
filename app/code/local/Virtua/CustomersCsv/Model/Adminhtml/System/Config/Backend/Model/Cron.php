@@ -28,6 +28,13 @@ class Virtua_CustomersCsv_Model_Adminhtml_System_Config_Backend_Model_Cron exten
      */
     protected function _afterSave()
     {
+        $this->setCron();
+
+        $this->importCustomers();
+    }
+
+    public function setCron()
+    {
         $time = $this->getData('groups/customerscsv_group/fields/time/value');
         $frequency = $this->getValue();
 
@@ -53,4 +60,10 @@ class Virtua_CustomersCsv_Model_Adminhtml_System_Config_Backend_Model_Cron exten
             throw new Exception(Mage::helper('cron')->__('Unable to save the cron expression.'));
         }
     }
+
+    public function importCustomers()
+    {
+        Mage::log('IMPORT DZIALA', null, 'system.log', true);
+    }
+
 }
