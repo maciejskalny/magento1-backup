@@ -22,18 +22,20 @@ class Virtua_CustomersCsv_Model_Observer
      */
     public function export()
     {
-        $customers = Mage::getModel('customer/customer')->getCollection()
-            ->addAttributeToSelect('firstname')
-            ->addAttributeToSelect('lastname')
-            ->addAttributeToSelect('email');
+        if (Mage::getStoreConfig('customerscsv_config/customerscsv_group/enabling', Mage::app()->getStore()) == true) {
+            $customers = Mage::getModel('customer/customer')->getCollection()
+                ->addAttributeToSelect('firstname')
+                ->addAttributeToSelect('lastname')
+                ->addAttributeToSelect('email');
 
-        $filename = Mage::getBaseDir('var') . DS . 'log' . DS . 'customers.csv';
-        $fh = fopen($filename, "w+");
+            $filename = Mage::getBaseDir('var') . DS . 'log' . DS . 'customers.csv';
+            $fh = fopen($filename, "w+");
 
-        foreach ($customers as $customer) {
-            $row = $customer['firstname'].' '.$customer['lastname'].' '.$customer['email'];
-            fwrite($fh, $row."\n");
+            foreach ($customers as $customer) {
+                $row = $customer['firstname'] . ' ' . $customer['lastname'] . ' ' . $customer['email'];
+                fwrite($fh, $row . "\n");
+            }
+            fclose($fh);
         }
-        fclose($fh);
     }
 }
