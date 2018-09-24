@@ -32,6 +32,9 @@ class Virtua_CustomersCsv_Model_Adminhtml_System_Config_Backend_Model_CustomersC
         $this->importCustomers();
     }
 
+    /**
+     * @throws Exception
+     */
     public function setCron()
     {
         $time = $this->getData('groups/customerscsv_group/fields/time/value');
@@ -60,25 +63,34 @@ class Virtua_CustomersCsv_Model_Adminhtml_System_Config_Backend_Model_CustomersC
         }
     }
 
+    /**
+     * Imports customers from .csv file
+     */
     public function importCustomers()
     {
         $importFile =  $this->getData('groups/customerscsv_import/fields/file/value');
         $importFileExtension = strrchr($importFile, '.');
 
         if ($importFileExtension == '.csv') {
-            $fileName = Mage::getBaseDir('var') . DS . 'import' . DS . $importFile;
-            Mage::log($fileName, null, 'system.log', true);
-            $fileContent = file_get_contents($fileName);
-
-            foreach (file($fileName) as $line) {
-                $array = explode(',', $line);
-                $this->saveCustomer($array);
+            try {
+                $fileName = Mage::getBaseDir('var') . DS . 'import' . DS . $importFile;
+                foreach (file($fileName) as $line) {
+                    $customer = explode(',', $line);
+                    $this->saveCustomer($customer);
+                }
+            } catch (Exception $e) {
+                Mage::getSingleton('core/session')->addError($e->getMessage());
             }
         } else {
             Mage::getSingleton('core/session')->addError('Error! Wrong file extension!');
         }
     }
 
+    /**
+     * @param $customer
+     * @throws Mage_Core_Exception
+     * @throws Mage_Core_Model_Store_Exception
+     */
     public function saveCustomer($customer)
     {
         $model = Mage::getModel('customer/customer');
@@ -95,7 +107,7 @@ class Virtua_CustomersCsv_Model_Adminhtml_System_Config_Backend_Model_CustomersC
         try {
             $model->save();
         } catch (Exception $e) {
-            Mage::log($e->getMessage(), null, 'system.log', true);
+            Mage::getSingleton('core/session')->addError($e->getMessage());
         }
     }
 }
